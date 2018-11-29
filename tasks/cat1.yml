@@ -1,42 +1,122 @@
 - name: "HIGH | PGS9-00-000300 | Security-relevant software updates to PostgreSQL must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs)."
-  block:
-      - name: "HIGH | PGS9-00-000300 | AUDIT | Security-relevant software updates to PostgreSQL must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs)."
-        command: "true"
-        register: pgs9_00_000300_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "HIGH | PGS9-00-000300 | PATCH | Security-relevant software updates to PostgreSQL must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs)."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_000300
+  yum:
+    state: latest
+    name: "*postgres*"
+    security: true
+  when: pgs9_00_000300
   tags:
-      - PGS9-00-000300
-      - notimplemented
+    - pgs9-00-000300
 
 - name: "HIGH | PGS9-00-008000 | PostgreSQL must implement NIST FIPS 140-2 validated cryptographic modules to generate and validate cryptographic hashes."
   block:
-      - name: "HIGH | PGS9-00-008000 | AUDIT | PostgreSQL must implement NIST FIPS 140-2 validated cryptographic modules to generate and validate cryptographic hashes."
-        command: "true"
-        register: pgs9_00_008000_audit
+      - name: "HIGH | PGS9-00-008000 | PostgreSQL must implement NIST FIPS 140-2 validated cryptographic modules to generate and validate cryptographic hashes."
+        yum:
+            name: dracut-fips
+            state: present
+        notify: rebuild initramfs
+
+      - name: "HIGH | PGS9-00-008000 | AUDIT | Check if prelink package is installed"
+        command: rpm -q prelink
+        args:
+            warn: no
+        changed_when: no
+        failed_when: no
+        check_mode: no
+        register: pgs9_00_008000_prelink_installed
+
+      - name: "HIGH | PGS9-00-008000 | PATCH | Disable prelinking."
+        lineinfile:
+            dest: /etc/sysconfig/prelink
+            regexp: ^#?PRELINKING
+            line: PRELINKING=no
+        when: pgs9_00_008000_prelink_installed.rc == 0
+        notify: undo existing prelinking
+
+      - name: "HIGH | PGS9-00-008000 | AUDIT | Check for GRUB_CMDLINE_LINUX in /etc/default/grub"
+        command: grep -P '^\s*GRUB_CMDLINE_LINUX=".*"$' /etc/default/grub
+        check_mode: no
+        failed_when: no
+        changed_when: pgs9_00_008000_default_grub_missing_audit.rc > 0
+        register: pgs9_00_008000_default_grub_missing_audit
+
+      - name: "HIGH | PGS9-00-008000 | AUDIT | parse sane GRUB_CMDLINE_LINUX from /proc/cmdline"
+        command: grep -oP ' ro \K.*?(?= ?LANG=)' /proc/cmdline
         check_mode: no
         changed_when: no
+        failed_when: pgs9_00_008000_grub_cmdline_linux_audit.rc > 1
+        when: pgs9_00_008000_default_grub_missing_audit is changed
+        register: pgs9_00_008000_grub_cmdline_linux_audit
+
+      - name: "HIGH | PGS9-00-008000 | PATCH | Copy over a sane /etc/default/grub"
+        template:
+            src: etc_default_grub.j2
+            dest: /etc/default/grub
+            owner: root
+            group: root
+            mode: 0644
+        vars:
+            grub_cmdline_linux: "{{ pgs9_00_008000_grub_cmdline_linux_audit.stdout }}"
+        when: pgs9_00_008000_default_grub_missing_audit is changed
+
+      - name: "HIGH | PGS9-00-008000 | PATCH | fips=1 must be in /etc/default/grub"
+        replace:
+            path: /etc/default/grub
+            regexp: "{{ pgs9stig_regexp_quoted_params }}"
+            replace: "{{ pgs9stig_replace_quoted_params }}"
+        vars:
+            key: GRUB_CMDLINE_LINUX
+            param: fips
+            value: 1
+            append: yes  # this is the default
+        when:
+            - not ansible_check_mode or
+              pgs9_00_008000_default_grub_missing_audit is not changed
+        notify: make grub2 config
+
+      - name: "HIGH | PGS9-00-008000 | PATCH | If /boot or /boot/efi reside on separate partitions, the kernel parameter boot=<partition> must be added to the kernel command line."
+        replace:
+            path: /etc/default/grub
+            regexp: "{{ pgs9stig_regexp_quoted_params }}"
+            replace: "{{ pgs9stig_replace_quoted_params }}"
         with_items:
-            - not implemented
-      - name: "HIGH | PGS9-00-008000 | PATCH | PostgreSQL must implement NIST FIPS 140-2 validated cryptographic modules to generate and validate cryptographic hashes."
-        command: "true"
-        changed_when: no
+            - "{{ ansible_mounts | json_query(query) }}"
+        vars:
+            query: "[?mount=='{{ pgs9stig_boot_part }}'] | [0]"
+            key: GRUB_CMDLINE_LINUX
+            param: boot
+            value: UUID={{ item.uuid }}
+            insert: yes
+        when:
+            - pgs9stig_boot_part not in ['/', '']
+            - not ansible_check_mode or
+              pgs9_00_008000_default_grub_missing_audit is not changed
+        notify: make grub2 config
+        register: result
+
+      - name: "HIGH | PGS9-00-008000 | AUDIT | Verify kernel parameters in /etc/default/grub"
+        command: grep -P '^\s*GRUB_CMDLINE_LINUX=".*(?<=[" ]){{ item | regex_escape }}(?=[" ]).*"$' /etc/default/grub
+        check_mode: no
         with_items:
-            - not implemented
-  when:
-      - pgs9_00_008000
+            - fips=1
+            - boot=UUID={{ ansible_mounts | json_query(query) }}
+        vars:
+            query: "[?mount=='{{ pgs9stig_boot_part }}'].uuid | [0]"
+        register: pgs9_00_008000_audit
+        when:
+            - not ansible_check_mode or
+              pgs9_00_008000_default_grub_missing_audit is not changed
+            - pgs9stig_boot_part not in ['/', ''] or
+              'boot=' not in item
+        changed_when:
+            - ansible_check_mode
+            - pgs9_00_008000_audit is failed
+        failed_when:
+            - pgs9_00_008000_audit is failed
+            - not ansible_check_mode or
+              pgs9_00_008000_audit.rc > 1
+  when: pgs9_00_008000
   tags:
       - PGS9-00-008000
-      - notimplemented
 
 - name: "HIGH | PGS9-00-008200 | PostgreSQL must implement NIST FIPS 140-2 validated cryptographic modules to protect unclassified information requiring confidentiality and cryptographic protection, in accordance with the data owners requirements."
   block:
@@ -72,8 +152,7 @@
         changed_when: no
         with_items:
             - not implemented
-  when:
-      - pgs9_00_010200
+  when: pgs9_00_010200
   tags:
       - PGS9-00-010200
       - notimplemented
@@ -92,49 +171,32 @@
         changed_when: no
         with_items:
             - not implemented
-  when:
-      - pgs9_00_011700
+  when: pgs9_00_011700
   tags:
       - PGS9-00-011700
       - notimplemented
 
-- name: "HIGH | PGS9-00-012300 | PostgreSQL must use NIST FIPS 140-2 validated cryptographic modules for cryptographic operations."
+- name: "HIGH | PGS9-00-012300 | PATCH | PostgreSQL must use NIST FIPS 140-2 validated cryptographic modules for cryptographic operations."
   block:
-      - name: "HIGH | PGS9-00-012300 | AUDIT | PostgreSQL must use NIST FIPS 140-2 validated cryptographic modules for cryptographic operations."
-        command: "true"
-        register: pgs9_00_012300_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
       - name: "HIGH | PGS9-00-012300 | PATCH | PostgreSQL must use NIST FIPS 140-2 validated cryptographic modules for cryptographic operations."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_012300
-  tags:
-      - PGS9-00-012300
-      - notimplemented
+        yum:
+          name: openssl
+          state: latest
+        when: pgs9_00_012300
+        tags:
+            - PGS9-00-012300
+
+      - name: "HIGH | PGS9-00-012300 | AUDIT | Check for FIPS validated version of openssl" 
+        shell: openssl version | grep 'fips'
+        register: pgs9stig_openssl_fips_check
+        failed_when: no
+        changed_when: pgs9stig_openssl_fips_check.rc != 0
+
+      - debug:
+          msg: CAT 1 Finding non-FIPS validated version of openssl found
+        when: pgs9stig_openssl_fips_check.rc != 0
 
 - name: "HIGH | PGS9-00-012800 | The DBMS must be configured on a platform that has a NIST certified FIPS 140-2 installation of OpenSSL."
-  block:
-      - name: "HIGH | PGS9-00-012800 | AUDIT | The DBMS must be configured on a platform that has a NIST certified FIPS 140-2 installation of OpenSSL."
-        command: "true"
-        register: pgs9_00_012800_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "HIGH | PGS9-00-012800 | PATCH | The DBMS must be configured on a platform that has a NIST certified FIPS 140-2 installation of OpenSSL."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_012800
-  tags:
-      - PGS9-00-012800
-      - notimplemented
-
+  debug:
+    msg: CAT 1 Finding, non RHEL system
+  when: ansible_distribution != "RedHat"
