@@ -1,0 +1,2080 @@
+- name: "MEDIUM | PGS9-00-000100 | PostgreSQL must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
+  block:
+      - name: "MEDIUM | PGS9-00-000100 | AUDIT | PostgreSQL must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
+        command: "true"
+        register: pgs9_00_000100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000100 | PATCH | PostgreSQL must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000100
+  tags:
+      - PGS9-00-000100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+  block:
+      - name: "MEDIUM | PGS9-00-000200 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+        command: "true"
+        register: pgs9_00_000200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000200
+  tags:
+      - PGS9-00-000200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
+  block:
+      - name: "MEDIUM | PGS9-00-000400 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized modification."
+        command: "true"
+        register: pgs9_00_000400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000400 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized modification."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000400
+  tags:
+      - PGS9-00-000400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000500 | PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
+  block:
+      - name: "MEDIUM | PGS9-00-000500 | AUDIT | PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
+        command: "true"
+        register: pgs9_00_000500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000500 | PATCH | PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000500
+  tags:
+      - PGS9-00-000500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000600 | PostgreSQL must provide non-privileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries."
+  block:
+      - name: "MEDIUM | PGS9-00-000600 | AUDIT | PostgreSQL must provide non-privileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries."
+        command: "true"
+        register: pgs9_00_000600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000600 | PATCH | PostgreSQL must provide non-privileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000600
+  tags:
+      - PGS9-00-000600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000700 | Privileges to change PostgreSQL software modules must be limited."
+  block:
+      - name: "MEDIUM | PGS9-00-000700 | AUDIT | Privileges to change PostgreSQL software modules must be limited."
+        command: "true"
+        register: pgs9_00_000700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000700 | PATCH | Privileges to change PostgreSQL software modules must be limited."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000700
+  tags:
+      - PGS9-00-000700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000710 | PostgreSQL must limit privileges to change functions and triggers, and links to software external to PostgreSQL."
+  block:
+      - name: "MEDIUM | PGS9-00-000710 | AUDIT | PostgreSQL must limit privileges to change functions and triggers, and links to software external to PostgreSQL."
+        command: "true"
+        register: pgs9_00_000710_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000710 | PATCH | PostgreSQL must limit privileges to change functions and triggers, and links to software external to PostgreSQL."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000710
+  tags:
+      - PGS9-00-000710
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000800 | If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
+  block:
+      - name: "MEDIUM | PGS9-00-000800 | AUDIT | If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
+        command: "true"
+        register: pgs9_00_000800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000800 | PATCH | If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000800
+  tags:
+      - PGS9-00-000800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-000900 | PostgreSQL must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
+  block:
+      - name: "MEDIUM | PGS9-00-000900 | AUDIT | PostgreSQL must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
+        command: "true"
+        register: pgs9_00_000900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000900 | PATCH | PostgreSQL must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000900
+  tags:
+      - PGS9-00-000900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001100 | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in transmission."
+  block:
+      - name: "MEDIUM | PGS9-00-001100 | AUDIT | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in transmission."
+        command: "true"
+        register: pgs9_00_001100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001100 | PATCH | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in transmission."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001100
+  tags:
+      - PGS9-00-001100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001200 | PostgreSQL must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
+  block:
+      - name: "MEDIUM | PGS9-00-001200 | AUDIT | PostgreSQL must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
+        command: "true"
+        register: pgs9_00_001200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001200 | PATCH | PostgreSQL must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001200
+  tags:
+      - PGS9-00-001200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001300 | The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (functions, trigger procedures, links to software external to PostgreSQL, etc.) must be restricted to authorized users."
+  block:
+      - name: "MEDIUM | PGS9-00-001300 | AUDIT | The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (functions, trigger procedures, links to software external to PostgreSQL, etc.) must be restricted to authorized users."
+        command: "true"
+        register: pgs9_00_001300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001300 | PATCH | The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (functions, trigger procedures, links to software external to PostgreSQL, etc.) must be restricted to authorized users."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001300
+  tags:
+      - PGS9-00-001300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001400 | PostgreSQL must uniquely identify and authenticate non-organizational users (or processes acting on behalf of non-organizational users)."
+  block:
+      - name: "MEDIUM | PGS9-00-001400 | AUDIT | PostgreSQL must uniquely identify and authenticate non-organizational users (or processes acting on behalf of non-organizational users)."
+        command: "true"
+        register: pgs9_00_001400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001400 | PATCH | PostgreSQL must uniquely identify and authenticate non-organizational users (or processes acting on behalf of non-organizational users)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001400
+  tags:
+      - PGS9-00-001400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001700 | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in storage."
+  block:
+      - name: "MEDIUM | PGS9-00-001700 | AUDIT | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in storage."
+        command: "true"
+        register: pgs9_00_001700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001700 | PATCH | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in storage."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001700
+  tags:
+      - PGS9-00-001700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001800 | PostgreSQL must check the validity of all data inputs except those specifically identified by the organization."
+  block:
+      - name: "MEDIUM | PGS9-00-001800 | AUDIT | PostgreSQL must check the validity of all data inputs except those specifically identified by the organization."
+        command: "true"
+        register: pgs9_00_001800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001800 | PATCH | PostgreSQL must check the validity of all data inputs except those specifically identified by the organization."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001800
+  tags:
+      - PGS9-00-001800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-001900 | PostgreSQL and associated applications must reserve the use of dynamic code execution for situations that require it."
+  block:
+      - name: "MEDIUM | PGS9-00-001900 | AUDIT | PostgreSQL and associated applications must reserve the use of dynamic code execution for situations that require it."
+        command: "true"
+        register: pgs9_00_001900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-001900 | PATCH | PostgreSQL and associated applications must reserve the use of dynamic code execution for situations that require it."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_001900
+  tags:
+      - PGS9-00-001900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002000 | PostgreSQL and associated applications, when making use of dynamic code execution, must scan input data for invalid values that may indicate a code injection attack."
+  block:
+      - name: "MEDIUM | PGS9-00-002000 | AUDIT | PostgreSQL and associated applications, when making use of dynamic code execution, must scan input data for invalid values that may indicate a code injection attack."
+        command: "true"
+        register: pgs9_00_002000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002000 | PATCH | PostgreSQL and associated applications, when making use of dynamic code execution, must scan input data for invalid values that may indicate a code injection attack."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002000
+  tags:
+      - PGS9-00-002000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002100 | PostgreSQL must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements."
+  block:
+      - name: "MEDIUM | PGS9-00-002100 | AUDIT | PostgreSQL must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements."
+        command: "true"
+        register: pgs9_00_002100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002100 | PATCH | PostgreSQL must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002100
+  tags:
+      - PGS9-00-002100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002200 | PostgreSQL must enforce discretionary access control policies, as defined by the data owner, over defined subjects and objects."
+  block:
+      - name: "MEDIUM | PGS9-00-002200 | AUDIT | PostgreSQL must enforce discretionary access control policies, as defined by the data owner, over defined subjects and objects."
+        command: "true"
+        register: pgs9_00_002200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002200 | PATCH | PostgreSQL must enforce discretionary access control policies, as defined by the data owner, over defined subjects and objects."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002200
+  tags:
+      - PGS9-00-002200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+  block:
+      - name: "MEDIUM | PGS9-00-002300 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+        command: "true"
+        register: pgs9_00_002300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002300 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002300
+  tags:
+      - PGS9-00-002300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002400 | PostgreSQL must record time stamps, in audit records and application data, that can be mapped to Coordinated Universal Time (UTC, formerly GMT)."
+  block:
+      - name: "MEDIUM | PGS9-00-002400 | AUDIT | PostgreSQL must record time stamps, in audit records and application data, that can be mapped to Coordinated Universal Time (UTC, formerly GMT)."
+        command: "true"
+        register: pgs9_00_002400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002400 | PATCH | PostgreSQL must record time stamps, in audit records and application data, that can be mapped to Coordinated Universal Time (UTC, formerly GMT)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002400
+  tags:
+      - PGS9-00-002400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002500 | PostgreSQL must reveal detailed error messages only to the ISSO, ISSM, SA and DBA."
+  block:
+      - name: "MEDIUM | PGS9-00-002500 | AUDIT | PostgreSQL must reveal detailed error messages only to the ISSO, ISSM, SA and DBA."
+        command: "true"
+        register: pgs9_00_002500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002500 | PATCH | PostgreSQL must reveal detailed error messages only to the ISSO, ISSM, SA and DBA."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002500
+  tags:
+      - PGS9-00-002500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002600 | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
+  block:
+      - name: "MEDIUM | PGS9-00-002600 | AUDIT | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
+        command: "true"
+        register: pgs9_00_002600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002600 | PATCH | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002600
+  tags:
+      - PGS9-00-002600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-002700 | PostgreSQL must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts."
+  block:
+      - name: "MEDIUM | PGS9-00-002700 | AUDIT | PostgreSQL must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts."
+        command: "true"
+        register: pgs9_00_002700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-002700 | PATCH | PostgreSQL must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_002700
+  tags:
+      - PGS9-00-002700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003000 | PostgreSQL must maintain the confidentiality and integrity of information during reception."
+  block:
+      - name: "MEDIUM | PGS9-00-003000 | AUDIT | PostgreSQL must maintain the confidentiality and integrity of information during reception."
+        command: "true"
+        register: pgs9_00_003000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003000 | PATCH | PostgreSQL must maintain the confidentiality and integrity of information during reception."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003000
+  tags:
+      - PGS9-00-003000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003100 | Database objects (including but not limited to tables, indexes, storage, trigger procedures, functions, links to software external to PostgreSQL, etc.) must be owned by database/DBMS principals authorized for ownership."
+  block:
+      - name: "MEDIUM | PGS9-00-003100 | AUDIT | Database objects (including but not limited to tables, indexes, storage, trigger procedures, functions, links to software external to PostgreSQL, etc.) must be owned by database/DBMS principals authorized for ownership."
+        command: "true"
+        register: pgs9_00_003100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003100 | PATCH | Database objects (including but not limited to tables, indexes, storage, trigger procedures, functions, links to software external to PostgreSQL, etc.) must be owned by database/DBMS principals authorized for ownership."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003100
+  tags:
+      - PGS9-00-003100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003200 | The PostgreSQL software installation account must be restricted to authorized users."
+  block:
+      - name: "MEDIUM | PGS9-00-003200 | AUDIT | The PostgreSQL software installation account must be restricted to authorized users."
+        command: "true"
+        register: pgs9_00_003200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003200 | PATCH | The PostgreSQL software installation account must be restricted to authorized users."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003200
+  tags:
+      - PGS9-00-003200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003300 | Database software, including PostgreSQL configuration files, must be stored in dedicated directories separate from the host OS and other applications."
+  block:
+      - name: "MEDIUM | PGS9-00-003300 | AUDIT | Database software, including PostgreSQL configuration files, must be stored in dedicated directories separate from the host OS and other applications."
+        command: "true"
+        register: pgs9_00_003300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003300 | PATCH | Database software, including PostgreSQL configuration files, must be stored in dedicated directories separate from the host OS and other applications."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003300
+  tags:
+      - PGS9-00-003300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003500 | PostgreSQL must include additional, more detailed, organization-defined information in the audit records for audit events identified by type, location, or subject."
+  block:
+      - name: "MEDIUM | PGS9-00-003500 | AUDIT | PostgreSQL must include additional, more detailed, organization-defined information in the audit records for audit events identified by type, location, or subject."
+        command: "true"
+        register: pgs9_00_003500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003500 | PATCH | PostgreSQL must include additional, more detailed, organization-defined information in the audit records for audit events identified by type, location, or subject."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003500
+  tags:
+      - PGS9-00-003500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003600 | Execution of software modules (to include functions and trigger procedures) with elevated privileges must be restricted to necessary cases only."
+  block:
+      - name: "MEDIUM | PGS9-00-003600 | AUDIT | Execution of software modules (to include functions and trigger procedures) with elevated privileges must be restricted to necessary cases only."
+        command: "true"
+        register: pgs9_00_003600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003600 | PATCH | Execution of software modules (to include functions and trigger procedures) with elevated privileges must be restricted to necessary cases only."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003600
+  tags:
+      - PGS9-00-003600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003700 | When invalid inputs are received, PostgreSQL must behave in a predictable and documented manner that reflects organizational and system objectives."
+  block:
+      - name: "MEDIUM | PGS9-00-003700 | AUDIT | When invalid inputs are received, PostgreSQL must behave in a predictable and documented manner that reflects organizational and system objectives."
+        command: "true"
+        register: pgs9_00_003700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003700 | PATCH | When invalid inputs are received, PostgreSQL must behave in a predictable and documented manner that reflects organizational and system objectives."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003700
+  tags:
+      - PGS9-00-003700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-003800 | PostgreSQL must utilize centralized management of the content captured in audit records generated by all components of PostgreSQL."
+  block:
+      - name: "MEDIUM | PGS9-00-003800 | AUDIT | PostgreSQL must utilize centralized management of the content captured in audit records generated by all components of PostgreSQL."
+        command: "true"
+        register: pgs9_00_003800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-003800 | PATCH | PostgreSQL must utilize centralized management of the content captured in audit records generated by all components of PostgreSQL."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_003800
+  tags:
+      - PGS9-00-003800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004000 | PostgreSQL must isolate security functions from non-security functions."
+  block:
+      - name: "MEDIUM | PGS9-00-004000 | AUDIT | PostgreSQL must isolate security functions from non-security functions."
+        command: "true"
+        register: pgs9_00_004000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004000 | PATCH | PostgreSQL must isolate security functions from non-security functions."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004000
+  tags:
+      - PGS9-00-004000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004100 | PostgreSQL must produce audit records of its enforcement of access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
+  block:
+      - name: "MEDIUM | PGS9-00-004100 | AUDIT | PostgreSQL must produce audit records of its enforcement of access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
+        command: "true"
+        register: pgs9_00_004100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004100 | PATCH | PostgreSQL must produce audit records of its enforcement of access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004100
+  tags:
+      - PGS9-00-004100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
+  block:
+      - name: "MEDIUM | PGS9-00-004200 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized read access."
+        command: "true"
+        register: pgs9_00_004200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004200 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized read access."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004200
+  tags:
+      - PGS9-00-004200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004300 | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
+  block:
+      - name: "MEDIUM | PGS9-00-004300 | AUDIT | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
+        command: "true"
+        register: pgs9_00_004300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004300 | PATCH | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004300
+  tags:
+      - PGS9-00-004300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004400 | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is accessed."
+  block:
+      - name: "MEDIUM | PGS9-00-004400 | AUDIT | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is accessed."
+        command: "true"
+        register: pgs9_00_004400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004400 | PATCH | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is accessed."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004400
+  tags:
+      - PGS9-00-004400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004500 | PostgreSQL must generate audit records when unsuccessful attempts to access security objects occur."
+  block:
+      - name: "MEDIUM | PGS9-00-004500 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to access security objects occur."
+        command: "true"
+        register: pgs9_00_004500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004500 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to access security objects occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004500
+  tags:
+      - PGS9-00-004500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004600 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
+  block:
+      - name: "MEDIUM | PGS9-00-004600 | AUDIT | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
+        command: "true"
+        register: pgs9_00_004600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004600 | PATCH | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004600
+  tags:
+      - PGS9-00-004600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004700 | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
+  block:
+      - name: "MEDIUM | PGS9-00-004700 | AUDIT | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
+        command: "true"
+        register: pgs9_00_004700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004700 | PATCH | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004700
+  tags:
+      - PGS9-00-004700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004800 | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
+  block:
+      - name: "MEDIUM | PGS9-00-004800 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
+        command: "true"
+        register: pgs9_00_004800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004800 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004800
+  tags:
+      - PGS9-00-004800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-004900 | PostgreSQL must generate audit records when privileges/permissions are added."
+  block:
+      - name: "MEDIUM | PGS9-00-004900 | AUDIT | PostgreSQL must generate audit records when privileges/permissions are added."
+        command: "true"
+        register: pgs9_00_004900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-004900 | PATCH | PostgreSQL must generate audit records when privileges/permissions are added."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_004900
+  tags:
+      - PGS9-00-004900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005000 | PostgreSQL must generate audit records when unsuccessful attempts to delete categorized information (e.g., classification levels/security levels) occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005000 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to delete categorized information (e.g., classification levels/security levels) occur."
+        command: "true"
+        register: pgs9_00_005000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005000 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to delete categorized information (e.g., classification levels/security levels) occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005000
+  tags:
+      - PGS9-00-005000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005100 | PostgreSQL must generate audit records when successful logons or connections occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005100 | AUDIT | PostgreSQL must generate audit records when successful logons or connections occur."
+        command: "true"
+        register: pgs9_00_005100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005100 | PATCH | PostgreSQL must generate audit records when successful logons or connections occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005100
+  tags:
+      - PGS9-00-005100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005200 | PostgreSQL must generate audit records when security objects are deleted."
+  block:
+      - name: "MEDIUM | PGS9-00-005200 | AUDIT | PostgreSQL must generate audit records when security objects are deleted."
+        command: "true"
+        register: pgs9_00_005200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005200 | PATCH | PostgreSQL must generate audit records when security objects are deleted."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005200
+  tags:
+      - PGS9-00-005200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005300 | PostgreSQL must generate audit records when unsuccessful attempts to retrieve privileges/permissions occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005300 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to retrieve privileges/permissions occur."
+        command: "true"
+        register: pgs9_00_005300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005300 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to retrieve privileges/permissions occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005300
+  tags:
+      - PGS9-00-005300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005400 | PostgreSQL must generate audit records when unsuccessful attempts to delete privileges/permissions occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005400 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to delete privileges/permissions occur."
+        command: "true"
+        register: pgs9_00_005400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005400 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to delete privileges/permissions occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005400
+  tags:
+      - PGS9-00-005400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005500 | PostgreSQL must be able to generate audit records when privileges/permissions are retrieved."
+  block:
+      - name: "MEDIUM | PGS9-00-005500 | AUDIT | PostgreSQL must be able to generate audit records when privileges/permissions are retrieved."
+        command: "true"
+        register: pgs9_00_005500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005500 | PATCH | PostgreSQL must be able to generate audit records when privileges/permissions are retrieved."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005500
+  tags:
+      - PGS9-00-005500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005600 | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005600 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
+        command: "true"
+        register: pgs9_00_005600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005600 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005600
+  tags:
+      - PGS9-00-005600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005700 | PostgreSQL must generate audit records when unsuccessful accesses to objects occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005700 | AUDIT | PostgreSQL must generate audit records when unsuccessful accesses to objects occur."
+        command: "true"
+        register: pgs9_00_005700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005700 | PATCH | PostgreSQL must generate audit records when unsuccessful accesses to objects occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005700
+  tags:
+      - PGS9-00-005700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005800 | PostgreSQL must generate audit records for all privileged activities or other system-level access."
+  block:
+      - name: "MEDIUM | PGS9-00-005800 | AUDIT | PostgreSQL must generate audit records for all privileged activities or other system-level access."
+        command: "true"
+        register: pgs9_00_005800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005800 | PATCH | PostgreSQL must generate audit records for all privileged activities or other system-level access."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005800
+  tags:
+      - PGS9-00-005800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-005900 | PostgreSQL must generate audit records when unsuccessful attempts to access categorized information (e.g., classification levels/security levels) occur."
+  block:
+      - name: "MEDIUM | PGS9-00-005900 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to access categorized information (e.g., classification levels/security levels) occur."
+        command: "true"
+        register: pgs9_00_005900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-005900 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to access categorized information (e.g., classification levels/security levels) occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_005900
+  tags:
+      - PGS9-00-005900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006000 | PostgreSQL must be able to generate audit records when security objects are accessed."
+  block:
+      - name: "MEDIUM | PGS9-00-006000 | AUDIT | PostgreSQL must be able to generate audit records when security objects are accessed."
+        command: "true"
+        register: pgs9_00_006000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006000 | PATCH | PostgreSQL must be able to generate audit records when security objects are accessed."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006000
+  tags:
+      - PGS9-00-006000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006100 | PostgreSQL must generate audit records when privileges/permissions are deleted."
+  block:
+      - name: "MEDIUM | PGS9-00-006100 | AUDIT | PostgreSQL must generate audit records when privileges/permissions are deleted."
+        command: "true"
+        register: pgs9_00_006100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006100 | PATCH | PostgreSQL must generate audit records when privileges/permissions are deleted."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006100
+  tags:
+      - PGS9-00-006100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006200 | PostgreSQL must generate audit records when concurrent logons/connections by the same user from different workstations occur."
+  block:
+      - name: "MEDIUM | PGS9-00-006200 | AUDIT | PostgreSQL must generate audit records when concurrent logons/connections by the same user from different workstations occur."
+        command: "true"
+        register: pgs9_00_006200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006200 | PATCH | PostgreSQL must generate audit records when concurrent logons/connections by the same user from different workstations occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006200
+  tags:
+      - PGS9-00-006200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006300 | PostgreSQL must generate audit records when unsuccessful attempts to delete security objects occur."
+  block:
+      - name: "MEDIUM | PGS9-00-006300 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to delete security objects occur."
+        command: "true"
+        register: pgs9_00_006300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006300 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to delete security objects occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006300
+  tags:
+      - PGS9-00-006300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006400 | PostgreSQL must generate audit records when privileges/permissions are modified."
+  block:
+      - name: "MEDIUM | PGS9-00-006400 | AUDIT | PostgreSQL must generate audit records when privileges/permissions are modified."
+        command: "true"
+        register: pgs9_00_006400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006400 | PATCH | PostgreSQL must generate audit records when privileges/permissions are modified."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006400
+  tags:
+      - PGS9-00-006400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006500 | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
+  block:
+      - name: "MEDIUM | PGS9-00-006500 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
+        command: "true"
+        register: pgs9_00_006500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006500 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006500
+  tags:
+      - PGS9-00-006500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006600 | PostgreSQL must generate audit records when security objects are modified."
+  block:
+      - name: "MEDIUM | PGS9-00-006600 | AUDIT | PostgreSQL must generate audit records when security objects are modified."
+        command: "true"
+        register: pgs9_00_006600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006600 | PATCH | PostgreSQL must generate audit records when security objects are modified."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006600
+  tags:
+      - PGS9-00-006600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006700 | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is modified."
+  block:
+      - name: "MEDIUM | PGS9-00-006700 | AUDIT | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is modified."
+        command: "true"
+        register: pgs9_00_006700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006700 | PATCH | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is modified."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006700
+  tags:
+      - PGS9-00-006700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006800 | PostgreSQL must generate audit records when unsuccessful attempts to modify privileges/permissions occur."
+  block:
+      - name: "MEDIUM | PGS9-00-006800 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to modify privileges/permissions occur."
+        command: "true"
+        register: pgs9_00_006800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006800 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to modify privileges/permissions occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006800
+  tags:
+      - PGS9-00-006800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-006900 | PostgreSQL must generate audit records when unsuccessful attempts to add privileges/permissions occur."
+  block:
+      - name: "MEDIUM | PGS9-00-006900 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to add privileges/permissions occur."
+        command: "true"
+        register: pgs9_00_006900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-006900 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to add privileges/permissions occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_006900
+  tags:
+      - PGS9-00-006900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-007000 | PostgreSQL, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation."
+  block:
+      - name: "MEDIUM | PGS9-00-007000 | AUDIT | PostgreSQL, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation."
+        command: "true"
+        register: pgs9_00_007000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-007000 | PATCH | PostgreSQL, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_007000
+  tags:
+      - PGS9-00-007000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-007200 | PostgreSQL must maintain the confidentiality and integrity of information during preparation for transmission."
+  block:
+      - name: "MEDIUM | PGS9-00-007200 | AUDIT | PostgreSQL must maintain the confidentiality and integrity of information during preparation for transmission."
+        command: "true"
+        register: pgs9_00_007200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-007200 | PATCH | PostgreSQL must maintain the confidentiality and integrity of information during preparation for transmission."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_007200
+  tags:
+      - PGS9-00-007200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-007400 | PostgreSQL must provide audit record generation capability for DoD-defined auditable events within all DBMS/database components."
+  block:
+      - name: "MEDIUM | PGS9-00-007400 | AUDIT | PostgreSQL must provide audit record generation capability for DoD-defined auditable events within all DBMS/database components."
+        command: "true"
+        register: pgs9_00_007400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-007400 | PATCH | PostgreSQL must provide audit record generation capability for DoD-defined auditable events within all DBMS/database components."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_007400
+  tags:
+      - PGS9-00-007400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-007700 | PostgreSQL must generate time stamps, for audit records and application data, with a minimum granularity of one second."
+  block:
+      - name: "MEDIUM | PGS9-00-007700 | AUDIT | PostgreSQL must generate time stamps, for audit records and application data, with a minimum granularity of one second."
+        command: "true"
+        register: pgs9_00_007700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-007700 | PATCH | PostgreSQL must generate time stamps, for audit records and application data, with a minimum granularity of one second."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_007700
+  tags:
+      - PGS9-00-007700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-007800 | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
+  block:
+      - name: "MEDIUM | PGS9-00-007800 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
+        command: "true"
+        register: pgs9_00_007800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-007800 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_007800
+  tags:
+      - PGS9-00-007800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008100 | PostgreSQL must use NSA-approved cryptography to protect classified information in accordance with the data owners requirements."
+  block:
+      - name: "MEDIUM | PGS9-00-008100 | AUDIT | PostgreSQL must use NSA-approved cryptography to protect classified information in accordance with the data owners requirements."
+        command: "true"
+        register: pgs9_00_008100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008100 | PATCH | PostgreSQL must use NSA-approved cryptography to protect classified information in accordance with the data owners requirements."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008100
+  tags:
+      - PGS9-00-008100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008300 | PostgreSQL must protect the confidentiality and integrity of all information at rest."
+  block:
+      - name: "MEDIUM | PGS9-00-008300 | AUDIT | PostgreSQL must protect the confidentiality and integrity of all information at rest."
+        command: "true"
+        register: pgs9_00_008300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008300 | PATCH | PostgreSQL must protect the confidentiality and integrity of all information at rest."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008300
+  tags:
+      - PGS9-00-008300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008400 | PostgreSQL must prohibit user installation of logic modules (functions, trigger procedures, views, etc.) without explicit privileged status."
+  block:
+      - name: "MEDIUM | PGS9-00-008400 | AUDIT | PostgreSQL must prohibit user installation of logic modules (functions, trigger procedures, views, etc.) without explicit privileged status."
+        command: "true"
+        register: pgs9_00_008400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008400 | PATCH | PostgreSQL must prohibit user installation of logic modules (functions, trigger procedures, views, etc.) without explicit privileged status."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008400
+  tags:
+      - PGS9-00-008400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008500 | PostgreSQL must separate user functionality (including user interface services) from database management functionality."
+  block:
+      - name: "MEDIUM | PGS9-00-008500 | AUDIT | PostgreSQL must separate user functionality (including user interface services) from database management functionality."
+        command: "true"
+        register: pgs9_00_008500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008500 | PATCH | PostgreSQL must separate user functionality (including user interface services) from database management functionality."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008500
+  tags:
+      - PGS9-00-008500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008600 | PostgreSQL must initiate session auditing upon startup."
+  block:
+      - name: "MEDIUM | PGS9-00-008600 | AUDIT | PostgreSQL must initiate session auditing upon startup."
+        command: "true"
+        register: pgs9_00_008600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008600 | PATCH | PostgreSQL must initiate session auditing upon startup."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008600
+  tags:
+      - PGS9-00-008600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008700 | PostgreSQL must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components."
+  block:
+      - name: "MEDIUM | PGS9-00-008700 | AUDIT | PostgreSQL must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components."
+        command: "true"
+        register: pgs9_00_008700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008700 | PATCH | PostgreSQL must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008700
+  tags:
+      - PGS9-00-008700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008800 | PostgreSQL must produce audit records containing sufficient information to establish the sources (origins) of the events."
+  block:
+      - name: "MEDIUM | PGS9-00-008800 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish the sources (origins) of the events."
+        command: "true"
+        register: pgs9_00_008800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008800 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the sources (origins) of the events."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008800
+  tags:
+      - PGS9-00-008800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-008900 | Unused database components, PostgreSQL software, and database objects must be removed."
+  block:
+      - name: "MEDIUM | PGS9-00-008900 | AUDIT | Unused database components, PostgreSQL software, and database objects must be removed."
+        command: "true"
+        register: pgs9_00_008900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-008900 | PATCH | Unused database components, PostgreSQL software, and database objects must be removed."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_008900
+  tags:
+      - PGS9-00-008900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009100 | Access to external executables must be disabled or restricted."
+  block:
+      - name: "MEDIUM | PGS9-00-009100 | AUDIT | Access to external executables must be disabled or restricted."
+        command: "true"
+        register: pgs9_00_009100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009100 | PATCH | Access to external executables must be disabled or restricted."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009100
+  tags:
+      - PGS9-00-009100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009200 | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
+  block:
+      - name: "MEDIUM | PGS9-00-009200 | AUDIT | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
+        command: "true"
+        register: pgs9_00_009200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009200 | PATCH | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009200
+  tags:
+      - PGS9-00-009200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009400 | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in process."
+  block:
+      - name: "MEDIUM | PGS9-00-009400 | AUDIT | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in process."
+        command: "true"
+        register: pgs9_00_009400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009400 | PATCH | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in process."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009400
+  tags:
+      - PGS9-00-009400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009500 | If passwords are used for authentication, PostgreSQL must store only hashed, salted representations of passwords."
+  block:
+      - name: "MEDIUM | PGS9-00-009500 | AUDIT | If passwords are used for authentication, PostgreSQL must store only hashed, salted representations of passwords."
+        command: "true"
+        register: pgs9_00_009500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009500 | PATCH | If passwords are used for authentication, PostgreSQL must store only hashed, salted representations of passwords."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009500
+  tags:
+      - PGS9-00-009500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009600 | PostgreSQL must enforce access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
+  block:
+      - name: "MEDIUM | PGS9-00-009600 | AUDIT | PostgreSQL must enforce access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
+        command: "true"
+        register: pgs9_00_009600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009600 | PATCH | PostgreSQL must enforce access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009600
+  tags:
+      - PGS9-00-009600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009700 | PostgreSQL must protect against a user falsely repudiating having performed organization-defined actions."
+  block:
+      - name: "MEDIUM | PGS9-00-009700 | AUDIT | PostgreSQL must protect against a user falsely repudiating having performed organization-defined actions."
+        command: "true"
+        register: pgs9_00_009700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009700 | PATCH | PostgreSQL must protect against a user falsely repudiating having performed organization-defined actions."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009700
+  tags:
+      - PGS9-00-009700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009800 | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
+  block:
+      - name: "MEDIUM | PGS9-00-009800 | AUDIT | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
+        command: "true"
+        register: pgs9_00_009800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009800 | PATCH | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009800
+  tags:
+      - PGS9-00-009800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-009900 | The system must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75% of maximum audit record storage capacity."
+  block:
+      - name: "MEDIUM | PGS9-00-009900 | AUDIT | The system must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75% of maximum audit record storage capacity."
+        command: "true"
+        register: pgs9_00_009900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-009900 | PATCH | The system must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75% of maximum audit record storage capacity."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_009900
+  tags:
+      - PGS9-00-009900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010000 | PostgreSQL must provide the means for individuals in authorized roles to change the auditing to be performed on all application components, based on all selectable event criteria within organization-defined time thresholds."
+  block:
+      - name: "MEDIUM | PGS9-00-010000 | AUDIT | PostgreSQL must provide the means for individuals in authorized roles to change the auditing to be performed on all application components, based on all selectable event criteria within organization-defined time thresholds."
+        command: "true"
+        register: pgs9_00_010000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010000 | PATCH | PostgreSQL must provide the means for individuals in authorized roles to change the auditing to be performed on all application components, based on all selectable event criteria within organization-defined time thresholds."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010000
+  tags:
+      - PGS9-00-010000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010100 | PostgreSQL must require users to reauthenticate when organization-defined circumstances or situations require reauthentication."
+  block:
+      - name: "MEDIUM | PGS9-00-010100 | AUDIT | PostgreSQL must require users to reauthenticate when organization-defined circumstances or situations require reauthentication."
+        command: "true"
+        register: pgs9_00_010100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010100 | PATCH | PostgreSQL must require users to reauthenticate when organization-defined circumstances or situations require reauthentication."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010100
+  tags:
+      - PGS9-00-010100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010300 | PostgreSQL must only accept end entity certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions."
+  block:
+      - name: "MEDIUM | PGS9-00-010300 | AUDIT | PostgreSQL must only accept end entity certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions."
+        command: "true"
+        register: pgs9_00_010300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010300 | PATCH | PostgreSQL must only accept end entity certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010300
+  tags:
+      - PGS9-00-010300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010400 | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
+  block:
+      - name: "MEDIUM | PGS9-00-010400 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
+        command: "true"
+        register: pgs9_00_010400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010400 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010400
+  tags:
+      - PGS9-00-010400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010500 | PostgreSQL must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
+  block:
+      - name: "MEDIUM | PGS9-00-010500 | AUDIT | PostgreSQL must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
+        command: "true"
+        register: pgs9_00_010500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010500 | PATCH | PostgreSQL must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010500
+  tags:
+      - PGS9-00-010500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010600 | PostgreSQL must invalidate session identifiers upon user logout or other session termination."
+  block:
+      - name: "MEDIUM | PGS9-00-010600 | AUDIT | PostgreSQL must invalidate session identifiers upon user logout or other session termination."
+        command: "true"
+        register: pgs9_00_010600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010600 | PATCH | PostgreSQL must invalidate session identifiers upon user logout or other session termination."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010600
+  tags:
+      - PGS9-00-010600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-010700 | PostgreSQL must protect its audit features from unauthorized access."
+  block:
+      - name: "MEDIUM | PGS9-00-010700 | AUDIT | PostgreSQL must protect its audit features from unauthorized access."
+        command: "true"
+        register: pgs9_00_010700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-010700 | PATCH | PostgreSQL must protect its audit features from unauthorized access."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_010700
+  tags:
+      - PGS9-00-010700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011100 | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
+  block:
+      - name: "MEDIUM | PGS9-00-011100 | AUDIT | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
+        command: "true"
+        register: pgs9_00_011100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011100 | PATCH | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011100
+  tags:
+      - PGS9-00-011100
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011200 | PostgreSQL must protect its audit features from unauthorized removal."
+  block:
+      - name: "MEDIUM | PGS9-00-011200 | AUDIT | PostgreSQL must protect its audit features from unauthorized removal."
+        command: "true"
+        register: pgs9_00_011200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011200 | PATCH | PostgreSQL must protect its audit features from unauthorized removal."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011200
+  tags:
+      - PGS9-00-011200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011300 | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
+  block:
+      - name: "MEDIUM | PGS9-00-011300 | AUDIT | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
+        command: "true"
+        register: pgs9_00_011300_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011300 | PATCH | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011300
+  tags:
+      - PGS9-00-011300
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011400 | PostgreSQL must maintain the authenticity of communications sessions by guarding against man-in-the-middle attacks that guess at Session ID values."
+  block:
+      - name: "MEDIUM | PGS9-00-011400 | AUDIT | PostgreSQL must maintain the authenticity of communications sessions by guarding against man-in-the-middle attacks that guess at Session ID values."
+        command: "true"
+        register: pgs9_00_011400_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011400 | PATCH | PostgreSQL must maintain the authenticity of communications sessions by guarding against man-in-the-middle attacks that guess at Session ID values."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011400
+  tags:
+      - PGS9-00-011400
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011500 | PostgreSQL must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users)."
+  block:
+      - name: "MEDIUM | PGS9-00-011500 | AUDIT | PostgreSQL must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users)."
+        command: "true"
+        register: pgs9_00_011500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011500 | PATCH | PostgreSQL must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011500
+  tags:
+      - PGS9-00-011500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011600 | PostgreSQL must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect."
+  block:
+      - name: "MEDIUM | PGS9-00-011600 | AUDIT | PostgreSQL must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect."
+        command: "true"
+        register: pgs9_00_011600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011600 | PATCH | PostgreSQL must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011600
+  tags:
+      - PGS9-00-011600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011800 | PostgreSQL must map the PKI-authenticated identity to an associated user account."
+  block:
+      - name: "MEDIUM | PGS9-00-011800 | AUDIT | PostgreSQL must map the PKI-authenticated identity to an associated user account."
+        command: "true"
+        register: pgs9_00_011800_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011800 | PATCH | PostgreSQL must map the PKI-authenticated identity to an associated user account."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011800
+  tags:
+      - PGS9-00-011800
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-011900 | Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy."
+  block:
+      - name: "MEDIUM | PGS9-00-011900 | AUDIT | Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy."
+        command: "true"
+        register: pgs9_00_011900_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-011900 | PATCH | Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_011900
+  tags:
+      - PGS9-00-011900
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-012000 | Access to database files must be limited to relevant processes and to authorized, administrative users."
+  block:
+      - name: "MEDIUM | PGS9-00-012000 | AUDIT | Access to database files must be limited to relevant processes and to authorized, administrative users."
+        command: "true"
+        register: pgs9_00_012000_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-012000 | PATCH | Access to database files must be limited to relevant processes and to authorized, administrative users."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_012000
+  tags:
+      - PGS9-00-012000
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-012200 | PostgreSQL must protect its audit configuration from unauthorized modification."
+  block:
+      - name: "MEDIUM | PGS9-00-012200 | AUDIT | PostgreSQL must protect its audit configuration from unauthorized modification."
+        command: "true"
+        register: pgs9_00_012200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-012200 | PATCH | PostgreSQL must protect its audit configuration from unauthorized modification."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_012200
+  tags:
+      - PGS9-00-012200
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-012500 | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
+  block:
+      - name: "MEDIUM | PGS9-00-012500 | AUDIT | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
+        command: "true"
+        register: pgs9_00_012500_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-012500 | PATCH | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_012500
+  tags:
+      - PGS9-00-012500
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-012600 | PostgreSQL must generate audit records when successful accesses to objects occur."
+  block:
+      - name: "MEDIUM | PGS9-00-012600 | AUDIT | PostgreSQL must generate audit records when successful accesses to objects occur."
+        command: "true"
+        register: pgs9_00_012600_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-012600 | PATCH | PostgreSQL must generate audit records when successful accesses to objects occur."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_012600
+  tags:
+      - PGS9-00-012600
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-012700 | PostgreSQL must generate audit records for all direct access to the database(s)."
+  block:
+      - name: "MEDIUM | PGS9-00-012700 | AUDIT | PostgreSQL must generate audit records for all direct access to the database(s)."
+        command: "true"
+        register: pgs9_00_012700_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-012700 | PATCH | PostgreSQL must generate audit records for all direct access to the database(s)."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_012700
+  tags:
+      - PGS9-00-012700
+      - notimplemented
+
+- name: "MEDIUM | PGS9-00-007100 | PostgreSQL must produce audit records containing sufficient information to establish where the events occurred."
+  block:
+      - name: "MEDIUM | PGS9-00-007100 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish where the events occurred."
+        command: "true"
+        register: pgs9_00_007100_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-007100 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish where the events occurred."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_007100
+  tags:
+      - PGS9-00-007100
+      - notimplemented
+
