@@ -1,3 +1,7 @@
+---
+- name: import preliminary tasks
+  import_tasks: prelim.yml
+
 - name: Include CAT 1 patches
   import_tasks: cat1.yml
   when: pgs9stig_cat1
