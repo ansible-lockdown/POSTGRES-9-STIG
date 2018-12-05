@@ -1,0 +1,22 @@
+---
+
+- name: "PRELIM | Gather mount information"
+  setup:
+      gather_subset: hardware,!all,!min
+      filter: ansible_mounts
+  when:
+      - ansible_mounts is not defined
+  tags:
+      - always
+
+- name: "PRELIM | PGS9-00-008000 | Check if /boot or /boot/efi reside on separate partitions"
+  shell: df --output=target /boot | tail -n 1
+  changed_when: no
+  check_mode: no
+  register: pgs9_00_boot_part
+  when:
+      - pgs9_00_008000
+  tags:
+      - cat1
+      - high
+      - PGS9-00-008000
