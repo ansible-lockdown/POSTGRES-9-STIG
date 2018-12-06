@@ -1424,24 +1424,17 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-008800 | PostgreSQL must produce audit records containing sufficient information to establish the sources (origins) of the events."
-  block:
-      - name: "MEDIUM | PGS9-00-008800 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish the sources (origins) of the events."
-        command: "true"
-        register: pgs9_00_008800_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-008800 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the sources (origins) of the events."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
+  with_items:
+      - config: log_hostname
+        value: "on"
   when:
       - pgs9_00_008800
   tags:
       - PGS9-00-008800
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-008900 | Unused database components, PostgreSQL software, and database objects must be removed."
   block:
