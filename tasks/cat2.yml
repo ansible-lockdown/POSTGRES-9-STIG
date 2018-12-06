@@ -133,24 +133,14 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-000800 | If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
-  block:
-      - name: "MEDIUM | PGS9-00-000800 | AUDIT | If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
-        command: "true"
-        register: pgs9_00_000800_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-000800 | PATCH | If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  replace:
+      path: "{{ pgs9stig_pgdata }}/pg_hba.conf"
+      regexp: '^([^#\n].*)password'
+      replace: '\1md5'
   when:
       - pgs9_00_000800
   tags:
       - PGS9-00-000800
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-000900 | PostgreSQL must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
   block:
