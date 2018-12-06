@@ -19,6 +19,10 @@ pgs9stig_doc_001200: no
 pgs9stig_max_connections: 100
 
 
+# PGS9-00-002400
+pgs9stig_log_timezone: UTC
+
+
 # HIGH
 pgs9_00_000300: yes
 pgs9_00_008000: yes

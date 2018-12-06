@@ -388,19 +388,13 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-002400 | PostgreSQL must record time stamps, in audit records and application data, that can be mapped to Coordinated Universal Time (UTC, formerly GMT)."
-  block:
-      - name: "MEDIUM | PGS9-00-002400 | AUDIT | PostgreSQL must record time stamps, in audit records and application data, that can be mapped to Coordinated Universal Time (UTC, formerly GMT)."
-        command: "true"
-        register: pgs9_00_002400_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-002400 | PATCH | PostgreSQL must record time stamps, in audit records and application data, that can be mapped to Coordinated Universal Time (UTC, formerly GMT)."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
+  with_items:
+      - config: log_timezone
+        value: "{{ pgs9stig_log_timezone }}"
   when:
       - pgs9_00_002400
   tags:
