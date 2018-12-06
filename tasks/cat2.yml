@@ -399,7 +399,6 @@
       - pgs9_00_002400
   tags:
       - PGS9-00-002400
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-002500 | PostgreSQL must reveal detailed error messages only to the ISSO, ISSM, SA and DBA."
   block:
@@ -741,7 +740,7 @@
       - PGS9-00-004500
       - notimplemented
 
-- name: "MEDIUM | PGS9-00-004600 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
+- name: "MEDIUM | PGS9-00-004600 PGS9-00-004700 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -752,30 +751,24 @@
       - config: log_line_prefix
         value: "'< %m %u %c: >'"
   when:
-      - pgs9_00_004600
+      - pgs9_00_004600 or
+        pgs9_00_004700
   tags:
       - PGS9-00-004600
-      - notimplemented
+      - PGS9-00-004700
 
 - name: "MEDIUM | PGS9-00-004700 | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
-  block:
-      - name: "MEDIUM | PGS9-00-004700 | AUDIT | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
-        command: "true"
-        register: pgs9_00_004700_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-004700 | PATCH | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
+  with_items:
+      - config: log_disconnections
+        value: "on"
   when:
       - pgs9_00_004700
   tags:
       - PGS9-00-004700
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-004800 | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
   block:
