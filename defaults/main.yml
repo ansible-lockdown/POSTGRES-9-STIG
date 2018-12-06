@@ -5,7 +5,9 @@ pgs9stig_cat2: yes
 pgs9stig_cat3: yes
 
 pgs9stig_postgres_packages:
-    - "*postg*"
+    - "*postgresql*"
+
+pgs9stig_postgres_user: postgres
 
 # HIGH
 pgs9_00_000300: yes
@@ -124,3 +126,9 @@ pgs9_00_007100: yes
 
 
 pgs9stig_boot_part: "{{ pgs9_00_boot_part.stdout }}"
+
+pgs9stig_lineinfile:
+    lineinfile:
+        line: "{{ item.config }} = {{ item.value }}"
+        regexp: "^{{ item.config | regex_escape }} *="
+        insertafter: "#{{ item.config | regex_escape }} *="

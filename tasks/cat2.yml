@@ -79,24 +79,16 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-000600 | PostgreSQL must provide non-privileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries."
-  block:
-      - name: "MEDIUM | PGS9-00-000600 | AUDIT | PostgreSQL must provide non-privileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries."
-        command: "true"
-        register: pgs9_00_000600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-000600 | PATCH | PostgreSQL must provide non-privileged users with error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  with_items:
+      - config: client_min_messages
+        value: error
   when:
       - pgs9_00_000600
   tags:
       - PGS9-00-000600
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-000700 | Privileges to change PostgreSQL software modules must be limited."
   block:

@@ -20,3 +20,20 @@
       - cat1
       - high
       - PGS9-00-008000
+
+- name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
+  block:
+      - name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
+        shell: psql -c 'show data_directory' | tail -n+3 | head -n 1 | cut -c2-
+        check_mode: no
+        changed_when: no
+        register: pgs9stig_pgdata_cmd
+        become: yes
+        become_user: postgres
+
+      - name: "PRELIM | make pgdata available as variable"
+        set_fact:
+            pgs9stig_pgdata: "{{ pgs9stig_pgdata_cmd.stdout }}"
+  when: pgs9stig_pgdata is not defined
+  tags:
+      - always
