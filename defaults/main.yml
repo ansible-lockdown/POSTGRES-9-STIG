@@ -96,7 +96,8 @@ pgs9_00_006700: yes
 pgs9_00_006800: yes
 pgs9_00_006900: yes
 pgs9_00_007000: yes
-pgs9_00_007200: yes
+# Need to generate certs first
+pgs9_00_007200: no
 pgs9_00_007400: yes
 pgs9_00_007700: yes
 pgs9_00_007800: yes

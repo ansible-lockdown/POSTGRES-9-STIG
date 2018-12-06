@@ -1231,24 +1231,17 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-007200 | PostgreSQL must maintain the confidentiality and integrity of information during preparation for transmission."
-  block:
-      - name: "MEDIUM | PGS9-00-007200 | AUDIT | PostgreSQL must maintain the confidentiality and integrity of information during preparation for transmission."
-        command: "true"
-        register: pgs9_00_007200_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-007200 | PATCH | PostgreSQL must maintain the confidentiality and integrity of information during preparation for transmission."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
+  with_items:
+      - config: ssl
+        value: "on"
   when:
       - pgs9_00_007200
   tags:
       - PGS9-00-007200
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-007400 | PostgreSQL must provide audit record generation capability for DoD-defined auditable events within all DBMS/database components."
   block:
