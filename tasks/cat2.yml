@@ -100,10 +100,12 @@
         with_items:
             - not implemented
       - name: "MEDIUM | PGS9-00-000700 | PATCH | Privileges to change PostgreSQL software modules must be limited."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        file:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
+            mode: 0600
+      # TODO: rpm -V and --setugids and --setperms for failures of PGS9 packages
   when:
       - pgs9_00_000700
   tags:
