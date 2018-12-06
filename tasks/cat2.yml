@@ -742,19 +742,15 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-004600 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
-  block:
-      - name: "MEDIUM | PGS9-00-004600 | AUDIT | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
-        command: "true"
-        register: pgs9_00_004600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-004600 | PATCH | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
+  with_items:
+      - config: log_connections
+        value: "on"
+      - config: log_line_prefix
+        value: "'< %m %u %c: >'"
   when:
       - pgs9_00_004600
   tags:
