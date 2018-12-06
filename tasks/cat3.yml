@@ -1,0 +1,4 @@
+---
+- name: prevent ansible warnings of empty file
+  debug:
+      msg: "There are currently no CAT3 STIG items for PGS9-STIG"
