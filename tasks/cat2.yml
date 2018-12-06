@@ -82,6 +82,7 @@
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
   with_items:
       - config: client_min_messages
         value: error
@@ -182,25 +183,29 @@
       - PGS9-00-001100
       - notimplemented
 
+
 - name: "MEDIUM | PGS9-00-001200 | PostgreSQL must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
   block:
       - name: "MEDIUM | PGS9-00-001200 | AUDIT | PostgreSQL must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
-        command: "true"
-        register: pgs9_00_001200_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: "If the total amount of connections is greater than documented by an organization, this is a finding."
+        changed_when:
+            - pgs9stig_warn_docs
+            - not pgs9stig_doc_001200
+
       - name: "MEDIUM | PGS9-00-001200 | PATCH | PostgreSQL must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
-        command: "true"
-        changed_when: no
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: restart postgres
         with_items:
-            - not implemented
+            - config: max_connections
+              value: "{{ pgs9stig_max_connections }}"
   when:
       - pgs9_00_001200
   tags:
       - PGS9-00-001200
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-001300 | The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (functions, trigger procedures, links to software external to PostgreSQL, etc.) must be restricted to authorized users."
   block:

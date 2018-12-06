@@ -8,6 +8,16 @@ pgs9stig_postgres_packages:
     - "*postgresql*"
 
 pgs9stig_postgres_user: postgres
+pgs9stig_postgres_service: postgresql-9.6
+
+# Show Changed for values requiring local documentation
+pgs9stig_warn_docs: yes
+
+
+# STIG items that have been documented locally (squashes "changed" for these)
+pgs9stig_doc_001200: no
+pgs9stig_max_connections: 100
+
 
 # HIGH
 pgs9_00_000300: yes

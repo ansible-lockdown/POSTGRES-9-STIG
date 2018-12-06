@@ -1,0 +1,5 @@
+---
+- name: restart postgres
+  service:
+      name: "{{ pgs9stig_postgres_service }}"
+      state: restarted
