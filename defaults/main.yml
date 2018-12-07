@@ -51,6 +51,7 @@ pgs9stig_max_connections: 100
 # STIG items that require manual verification (squashes "changed" for these)
 # set '{pgs9stig_warn_manual: no}' above to squash all
 pgs9stig_manual_000200: no
+pgs9stig_manual_002300: no
 
 
 # PGS9-00-000100
