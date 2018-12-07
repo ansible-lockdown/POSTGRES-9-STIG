@@ -744,7 +744,7 @@
       - config: log_connections
         value: "on"
       - config: log_line_prefix
-        value: "'< %m %u %c: >'"
+        value: "{{ pgs9stig_log_line_prefix }}"
   when:
       - pgs9_00_004600 or
         pgs9_00_004700
@@ -1424,6 +1424,8 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: restart postgres
   with_items:
+      - config: log_line_prefix
+        value: "{{ pgs9stig_log_line_prefix }}"
       - config: log_hostname
         value: "on"
   when:
