@@ -15,23 +15,25 @@
 
 - name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
   block:
-      - name: "MEDIUM | PGS9-00-000200 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
-        command: "true"
-        register: pgs9_00_000200_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
       - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: reload postgres
+        with_dict:
+            log_file_mode: "0600"
+
+      - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+        file:
+            path: "{{ pgs9stig_log_directory }}"
+            mode: go-rwx
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
+            recurse: yes
   when:
       - pgs9_00_000200
   tags:
       - PGS9-00-000200
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
   block:
