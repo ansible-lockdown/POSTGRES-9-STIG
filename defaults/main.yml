@@ -165,6 +165,6 @@ pgs9stig_boot_part: "{{ pgs9_00_boot_part.stdout }}"
 
 pgs9stig_lineinfile:
     lineinfile:
-        line: "{{ item.config }} = {{ item.value }}"
-        regexp: "^{{ item.config | regex_escape }} *="
-        insertafter: "#{{ item.config | regex_escape }} *="
+        line: "{{ item.key }} = {{ item.value }}"
+        regexp: "^{{ item.key | regex_escape }} *="
+        insertafter: "#{{ item.key | regex_escape }} *="

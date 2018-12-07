@@ -5,7 +5,7 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: restart postgres
   with_items:
-      - config: port
+      - key: port
         value: "{{ pgs9stig_port }}"
   when:
       - pgs9_00_000100
@@ -79,7 +79,7 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: reload postgres
   with_items:
-      - config: client_min_messages
+      - key: client_min_messages
         value: error
   when:
       - pgs9_00_000600
@@ -194,7 +194,7 @@
         module_defaults: "{{ pgs9stig_lineinfile }}"
         notify: restart postgres
         with_items:
-            - config: max_connections
+            - key: max_connections
               value: "{{ pgs9stig_max_connections }}"
   when:
       - pgs9_00_001200
@@ -388,7 +388,7 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: reload postgres
   with_items:
-      - config: log_timezone
+      - key: log_timezone
         value: "{{ pgs9stig_log_timezone }}"
   when:
       - pgs9_00_002400
@@ -741,9 +741,9 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: reload postgres
   with_items:
-      - config: log_connections
+      - key: log_connections
         value: "on"
-      - config: log_line_prefix
+      - key: log_line_prefix
         value: "{{ pgs9stig_log_line_prefix }}"
   when:
       - pgs9_00_004600 or
@@ -758,7 +758,7 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: reload postgres
   with_items:
-      - config: log_disconnections
+      - key: log_disconnections
         value: "on"
   when:
       - pgs9_00_004700
@@ -1231,7 +1231,7 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: restart postgres
   with_items:
-      - config: ssl
+      - key: ssl
         value: "on"
   when:
       - pgs9_00_007200
@@ -1424,9 +1424,9 @@
   module_defaults: "{{ pgs9stig_lineinfile }}"
   notify: restart postgres
   with_items:
-      - config: log_line_prefix
+      - key: log_line_prefix
         value: "{{ pgs9stig_log_line_prefix }}"
-      - config: log_hostname
+      - key: log_hostname
         value: "on"
   when:
       - pgs9_00_008800
