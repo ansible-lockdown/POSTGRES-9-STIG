@@ -20,6 +20,9 @@ pgs9stig_log_directory: "{{ pgs9stig_pgdata }}/pg_log"
 # Show Changed for values requiring local documentation
 pgs9stig_warn_docs: yes
 
+# Show Changed for items requiring manual verification
+pgs9stig_warn_manual: yes
+
 
 # log_line_prefix
 # PGS9-00-000200: '< %m %u %d %e: >'
@@ -40,8 +43,14 @@ pgs9stig_log_line_prefix: "'< %m %a %u %d %r %p %c %s >'"
 
 
 # STIG items that have been documented locally (squashes "changed" for these)
+# set '{pgs9stig_warn_docs: no}' above to squash all
 pgs9stig_doc_001200: no
 pgs9stig_max_connections: 100
+
+
+# STIG items that require manual verification (squashes "changed" for these)
+# set '{pgs9stig_warn_manual: no}' above to squash all
+pgs9stig_manual_000200: no
 
 
 # PGS9-00-000100

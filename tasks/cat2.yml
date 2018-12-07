@@ -14,6 +14,18 @@
 
 
 - name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+  debug:
+      msg: "If the PostgreSQL server is configured to use syslog for logging, consult the organization syslog setting for permissions and ownership of logs."
+  changed_when:
+      - pgs9stig_warn_manual
+      - not pgs9stig_manual_000200
+  when:
+      - pgs9_00_000200
+      - pgs9stig_log_destination == 'syslog'
+  tags:
+      - PGS9-00-000200
+
+- name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
   block:
       - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
         lineinfile:
@@ -32,8 +44,10 @@
             recurse: yes
   when:
       - pgs9_00_000200
+      - pgs9stig_log_destination == 'stderr'
   tags:
       - PGS9-00-000200
+
 
 - name: "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
   block:
