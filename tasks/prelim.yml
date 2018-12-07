@@ -43,7 +43,7 @@
   tags:
       - always
 
-- name: "PRELIM | Appendix C: Logging | stderr"
+- name: "PRELIM | PGS9-00-003700 | Appendix C: Logging | stderr"
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -60,3 +60,4 @@
   when: pgs9stig_log_destination == 'stderr'
   tags:
       - always
+      - PGS9-00-003700
