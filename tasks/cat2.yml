@@ -1,22 +1,17 @@
+---
 - name: "MEDIUM | PGS9-00-000100 | PostgreSQL must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
-  block:
-      - name: "MEDIUM | PGS9-00-000100 | AUDIT | PostgreSQL must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
-        command: "true"
-        register: pgs9_00_000100_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-000100 | PATCH | PostgreSQL must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: restart postgres
+  with_items:
+      - config: port
+        value: "{{ pgs9stig_port }}"
   when:
       - pgs9_00_000100
   tags:
       - PGS9-00-000100
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
   block:
