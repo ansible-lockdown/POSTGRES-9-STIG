@@ -42,3 +42,21 @@
   when: pgs9stig_pgdata is not defined
   tags:
       - always
+
+- name: "PRELIM | Appendix C: Logging | stderr"
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: reload postgres
+  with_dict:
+      log_destination: "'stderr'"
+      logging_collector: "on"
+      log_directory: "'pg_log'"
+      log_filename: "'postgresql-%a.log'"
+      log_file_mode: "0600"
+      log_truncate_on_rotation: "on"
+      log_rotation_age: "1d"
+      log_rotation_size: 0
+  when: pgs9stig_log_destination == 'stderr'
+  tags:
+      - always
