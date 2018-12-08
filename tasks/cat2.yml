@@ -115,27 +115,35 @@
   tags:
       - PGS9-00-000600
 
+
 - name: "MEDIUM | PGS9-00-000700 | Privileges to change PostgreSQL software modules must be limited."
   block:
       - name: "MEDIUM | PGS9-00-000700 | AUDIT | Privileges to change PostgreSQL software modules must be limited."
-        command: "true"
+        shell: rpm -Va {{ pgs9stig_postgres_packages | join(" ") }} | grep -v "^.\....\.\...  c"
+        args:
+            warn: no
         register: pgs9_00_000700_audit
         check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        changed_when: pgs9_00_000700_audit.rc == 0
+        failed_when: pgs9_00_000700_audit.rc > 1
+
+      - name: "MEDIUM | PGS9-00-000700 | PATCH | Privileges to change PostgreSQL software modules must be limited."
+        shell: rpm --setugids -a {{ pgs9stig_postgres_packages | join(" ") }} ; rpm --setperms -a {{ pgs9stig_postgres_packages | join(" ") }}
+        args:
+            warn: no
+        when: pgs9_00_000700_audit is changed
+
       - name: "MEDIUM | PGS9-00-000700 | PATCH | Privileges to change PostgreSQL software modules must be limited."
         file:
-            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+            path: "{{ pgs9stig_pgdata }}"
             owner: "{{ pgs9stig_postgres_user }}"
             group: "{{ pgs9stig_postgres_user }}"
-            mode: 0600
-      # TODO: rpm -V and --setugids and --setperms for failures of PGS9 packages
+            mode: o-w
   when:
       - pgs9_00_000700
   tags:
       - PGS9-00-000700
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-000710 | PostgreSQL must limit privileges to change functions and triggers, and links to software external to PostgreSQL."
   block:
