@@ -53,10 +53,12 @@
 - name: |
       "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
       "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+      "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
   block:
       - name: |
             "MEDIUM | PGS9-00-000400 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized modification."
             "MEDIUM | PGS9-00-002300 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+            "MEDIUM | PGS9-00-004200 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized read access."
         lineinfile:
             path: "{{ pgs9stig_pgdata }}/postgresql.conf"
         module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -67,6 +69,7 @@
       - name: |
             "MEDIUM | PGS9-00-000400 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized modification."
             "MEDIUM | PGS9-00-002300 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+            "MEDIUM | PGS9-00-004200 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized read access."
         file:
             path: "{{ pgs9stig_log_directory }}"
             mode: go-rwx
@@ -75,11 +78,14 @@
             recurse: yes
   when:
       - pgs9_00_000400 or
-        pgs9_00_002300
+        pgs9_00_002300 or
+        pgs9_00_004200 or
+        false
       - pgs9stig_log_destination == 'stderr'
   tags:
       - PGS9-00-000400
       - PGS9-00-002300
+      - PGS9-00-004200
 
 
 - name: "MEDIUM | PGS9-00-000500 | PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
@@ -676,25 +682,39 @@
       - PGS9-00-004100
       - notimplemented
 
+
+- name: "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
+  debug:
+      msg: "If PostgreSQL is configured to use syslog for logging, consult organization location and permissions for syslog log files."
+  changed_when:
+      - pgs9stig_warn_manual
+      - not pgs9stig_manual_004200
+  when:
+      - pgs9_00_004200
+      - pgs9stig_log_destination == 'syslog'
+  tags:
+      - PGS9-00-004200
+
 - name: "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
   block:
       - name: "MEDIUM | PGS9-00-004200 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized read access."
-        command: "true"
+        find:
+           path: "{{ pgs9stig_log_directory }}"
         register: pgs9_00_004200_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        changed_when: pgs9_00_004200_audit.files | length == 0
+
       - name: "MEDIUM | PGS9-00-004200 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized read access."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: |
+                "If logs with 600 permissions do not exist in log_destination, this is a finding."
+
+                NO FILES FOUND IN {{ pgs9stig_log_directory }}
+        changed_when: yes
+        when: pgs9_00_004200_audit is changed
   when:
       - pgs9_00_004200
   tags:
       - PGS9-00-004200
-      - notimplemented
 
 
 - name: "MEDIUM | PGS9-00-004300 | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
