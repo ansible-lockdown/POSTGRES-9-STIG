@@ -783,7 +783,9 @@
       - PGS9-00-004500
       - notimplemented
 
-- name: "MEDIUM | PGS9-00-004600 PGS9-00-004700 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
+- name: |
+      "MEDIUM | PGS9-00-004600 PGS9-00-004700 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
+      "MEDIUM | PGS9-00-005100 | PostgreSQL must generate audit records when successful logons or connections occur."
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -795,10 +797,14 @@
         value: "{{ pgs9stig_log_line_prefix }}"
   when:
       - pgs9_00_004600 or
-        pgs9_00_004700
+        pgs9_00_004700 or
+        pgs9_00_005100 or
+        false
   tags:
       - PGS9-00-004600
       - PGS9-00-004700
+      - PGS9-00-005100
+
 
 - name: "MEDIUM | PGS9-00-004700 | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
   lineinfile:
@@ -871,26 +877,6 @@
       - pgs9_00_005000
   tags:
       - PGS9-00-005000
-      - notimplemented
-
-- name: "MEDIUM | PGS9-00-005100 | PostgreSQL must generate audit records when successful logons or connections occur."
-  block:
-      - name: "MEDIUM | PGS9-00-005100 | AUDIT | PostgreSQL must generate audit records when successful logons or connections occur."
-        command: "true"
-        register: pgs9_00_005100_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-005100 | PATCH | PostgreSQL must generate audit records when successful logons or connections occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_005100
-  tags:
-      - PGS9-00-005100
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-005200 | PostgreSQL must generate audit records when security objects are deleted."
