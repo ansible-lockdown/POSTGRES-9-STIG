@@ -12,30 +12,50 @@
   tags:
       - PGS9-00-000100
 
+- name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+  block:
+      - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+        command: "true"
+        register: pgs9_00_000200_audit
+        check_mode: no
+        changed_when: no
+        with_items:
+            - not implemented
+      - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+        command: "true"
+        changed_when: no
+        with_items:
+            - not implemented
+  when:
+      - pgs9_00_000200
+  tags:
+      - PGS9-00-000200
+      - notimplemented
+
 
 - name: |
-      "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+      "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
       "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
   debug:
       msg: "If the PostgreSQL server is configured to use syslog for logging, consult the organization syslog setting for permissions and ownership of logs."
   changed_when:
       - pgs9stig_warn_manual
-      - not pgs9stig_manual_000200 or
+      - not pgs9stig_manual_000400 or
         not pgs9stig_manual_002300
   when:
-      - pgs9_00_000200 or
+      - pgs9_00_000400 or
         pgs9_00_002300
       - pgs9stig_log_destination == 'syslog'
   tags:
-      - PGS9-00-000200
+      - PGS9-00-000400
       - PGS9-00-002300
 
 - name: |
-      "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+      "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
       "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
   block:
       - name: |
-            "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+            "MEDIUM | PGS9-00-000400 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized modification."
             "MEDIUM | PGS9-00-002300 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
         lineinfile:
             path: "{{ pgs9stig_pgdata }}/postgresql.conf"
@@ -45,7 +65,7 @@
             log_file_mode: "0600"
 
       - name: |
-            "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
+            "MEDIUM | PGS9-00-000400 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized modification."
             "MEDIUM | PGS9-00-002300 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
         file:
             path: "{{ pgs9stig_log_directory }}"
@@ -54,33 +74,13 @@
             group: "{{ pgs9stig_postgres_user }}"
             recurse: yes
   when:
-      - pgs9_00_000200 or
+      - pgs9_00_000400 or
         pgs9_00_002300
       - pgs9stig_log_destination == 'stderr'
   tags:
-      - PGS9-00-000200
+      - PGS9-00-000400
       - PGS9-00-002300
 
-
-- name: "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
-  block:
-      - name: "MEDIUM | PGS9-00-000400 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized modification."
-        command: "true"
-        register: pgs9_00_000400_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-000400 | PATCH | The audit information produced by PostgreSQL must be protected from unauthorized modification."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_000400
-  tags:
-      - PGS9-00-000400
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-000500 | PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
   block:
