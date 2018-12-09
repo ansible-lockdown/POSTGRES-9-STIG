@@ -696,25 +696,32 @@
       - PGS9-00-004200
       - notimplemented
 
+
 - name: "MEDIUM | PGS9-00-004300 | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
   block:
       - name: "MEDIUM | PGS9-00-004300 | AUDIT | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
-        command: "true"
+        command: rpm -qa *postgres*-server
+        args:
+            warn: no
         register: pgs9_00_004300_audit
         check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        changed_when: pgs9_00_004300_audit.stdout_lines | length > 1
+
       - name: "MEDIUM | PGS9-00-004300 | PATCH | When updates are applied to PostgreSQL software, any software components that have been replaced or made unnecessary must be removed."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: |
+                If multiple versions of postgres are installed but are unused, this is a finding.
+
+                VERSIONS FOUND INSTALLED:
+                {{ pgs9_00_004300_audit.stdout }}
+        changed_when: yes
+        when: pgs9_00_004300_audit is changed
   when:
       - pgs9_00_004300
+      - not pgs9stig_multiple_versions_in_use
   tags:
       - PGS9-00-004300
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-004400 | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is accessed."
   block:
