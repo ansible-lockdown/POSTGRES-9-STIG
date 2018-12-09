@@ -51,7 +51,7 @@ pgs9stig_doc_003700: no
 
 # STIG items that require manual verification (squashes "changed" for these)
 # set '{pgs9stig_warn_manual: no}' above to squash all
-pgs9stig_manual_000200: no
+pgs9stig_manual_000400: no
 pgs9stig_manual_002300: no
 
 
