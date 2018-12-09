@@ -532,25 +532,37 @@
       - PGS9-00-003200
       - notimplemented
 
+
 - name: "MEDIUM | PGS9-00-003300 | Database software, including PostgreSQL configuration files, must be stored in dedicated directories separate from the host OS and other applications."
   block:
       - name: "MEDIUM | PGS9-00-003300 | AUDIT | Database software, including PostgreSQL configuration files, must be stored in dedicated directories separate from the host OS and other applications."
-        command: "true"
+        shell: rpm -qla '*postg*' | xargs sh -c 'find $@ -maxdepth 0 -type d' |
+                grep -P '^/(usr|opt).*/lib' |
+                xargs sh -c 'find /etc/system-release $@ -exec rpm -qf --quiet {} \; -o -print' arg0
+        args:
+            warn: no
         register: pgs9_00_003300_audit
         check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        changed_when: pgs9_00_003300_audit.stdout_lines | length > 0
+
       - name: "MEDIUM | PGS9-00-003300 | PATCH | Database software, including PostgreSQL configuration files, must be stored in dedicated directories separate from the host OS and other applications."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: |
+                If any non-PostgreSQL software directories exist on the disk directory, examine or investigate their use. If any of the directories are used by other applications, including third-party applications that use the PostgreSQL, this is a finding.
+
+                Only applications that are required for the functioning and administration, not use, of the PostgreSQL software library should be located in the same disk directory as the PostgreSQL software libraries.
+
+                If other applications are located in the same directory as PostgreSQL, this is a finding.
+
+                ITEMS FOUND:
+                {{ pgs9_00_003300_audit.stdout }}
+        changed_when: yes
+        when: pgs9_00_003300_audit is changed
   when:
       - pgs9_00_003300
   tags:
       - PGS9-00-003300
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-003500 | PostgreSQL must include additional, more detailed, organization-defined information in the audit records for audit events identified by type, location, or subject."
   block:
