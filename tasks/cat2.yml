@@ -1283,6 +1283,7 @@
 - name: |
       "MEDIUM | PGS9-00-007100 | PostgreSQL must produce audit records containing sufficient information to establish where the events occurred."
       "MEDIUM | PGS9-00-007700 | PostgreSQL must generate time stamps, for audit records and application data, with a minimum granularity of one second."
+      "MEDIUM | PGS9-00-007800 | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -1293,30 +1294,12 @@
   when:
       - pgs9_00_007100 or
         pgs9_00_007700 or
+        pgs9_00_007800 or
         false
   tags:
       - PGS9-00-007100
       - PGS9-00-007700
-
-- name: "MEDIUM | PGS9-00-007800 | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
-  block:
-      - name: "MEDIUM | PGS9-00-007800 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
-        command: "true"
-        register: pgs9_00_007800_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-007800 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_007800
-  tags:
       - PGS9-00-007800
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-008100 | PostgreSQL must use NSA-approved cryptography to protect classified information in accordance with the data owners requirements."
   block:
