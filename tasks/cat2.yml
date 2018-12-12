@@ -787,6 +787,7 @@
       "MEDIUM | PGS9-00-004600 PGS9-00-004700 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
       "MEDIUM | PGS9-00-005100 | PostgreSQL must generate audit records when successful logons or connections occur."
       "MEDIUM | PGS9-00-006200 | PostgreSQL must generate audit records when concurrent logons/connections by the same user from different workstations occur."
+      "MEDIUM | PGS9-00-010400 | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -801,17 +802,19 @@
         pgs9_00_004700 or
         pgs9_00_005100 or
         pgs9_00_006200 or
+        pgs9_00_010400 or
         false
   tags:
       - PGS9-00-004600
       - PGS9-00-004700
       - PGS9-00-005100
       - PGS9-00-006200
-
+      - PGS9-00-010400
 
 - name: |
       "MEDIUM | PGS9-00-004700 | PostgreSQL must generate audit records showing starting and ending time for user access to the database(s)."
       "MEDIUM | PGS9-00-006200 | PostgreSQL must generate audit records when concurrent logons/connections by the same user from different workstations occur."
+      "MEDIUM | PGS9-00-010400 | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
   lineinfile:
       path: "{{ pgs9stig_pgdata }}/postgresql.conf"
   module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -822,10 +825,12 @@
   when:
       - pgs9_00_004700 or
         pgs9_00_006200 or
+        pgs9_00_010400 or
         false
   tags:
       - PGS9-00-004700
       - PGS9-00-006200
+      - PGS9-00-010400
 
 - name: "MEDIUM | PGS9-00-004800 | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
   block:
@@ -1674,26 +1679,6 @@
       - pgs9_00_010300
   tags:
       - PGS9-00-010300
-      - notimplemented
-
-- name: "MEDIUM | PGS9-00-010400 | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
-  block:
-      - name: "MEDIUM | PGS9-00-010400 | AUDIT | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
-        command: "true"
-        register: pgs9_00_010400_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-010400 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
-  when:
-      - pgs9_00_010400
-  tags:
-      - PGS9-00-010400
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-010500 | PostgreSQL must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
