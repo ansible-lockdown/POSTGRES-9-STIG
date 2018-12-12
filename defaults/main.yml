@@ -65,6 +65,12 @@ pgs9stig_log_timezone: UTC
 # PGS9-00-004300
 pgs9stig_multiple_versions_in_use: no
 
+# PGS9-00-010600
+pgs9stig_statement_timeout: 10000
+pgs9stig_tcp_keepalives_idle: 10
+pgs9stig_tcp_keepalives_interval: 10
+pgs9stig_tcp_keepalives_count: 10
+
 
 # HIGH
 pgs9_00_000300: yes

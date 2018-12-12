@@ -1702,24 +1702,19 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-010600 | PostgreSQL must invalidate session identifiers upon user logout or other session termination."
-  block:
-      - name: "MEDIUM | PGS9-00-010600 | AUDIT | PostgreSQL must invalidate session identifiers upon user logout or other session termination."
-        command: "true"
-        register: pgs9_00_010600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-010600 | PATCH | PostgreSQL must invalidate session identifiers upon user logout or other session termination."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: reload postgres
+  with_dict:
+      statement_timeout: "{{ pgs9stig_statement_timeout }}"
+      tcp_keepalives_idle: "{{ pgs9stig_tcp_keepalives_idle }}"
+      tcp_keepalives_interval: "{{ pgs9stig_tcp_keepalives_interval }}"
+      tcp_keepalives_count: "{{ pgs9stig_tcp_keepalives_count }}"
   when:
       - pgs9_00_010600
   tags:
       - PGS9-00-010600
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-010700 | PostgreSQL must protect its audit features from unauthorized access."
   block:
