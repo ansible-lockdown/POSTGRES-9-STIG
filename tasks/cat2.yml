@@ -1897,24 +1897,16 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-012000 | Access to database files must be limited to relevant processes and to authorized, administrative users."
-  block:
-      - name: "MEDIUM | PGS9-00-012000 | AUDIT | Access to database files must be limited to relevant processes and to authorized, administrative users."
-        command: "true"
-        register: pgs9_00_012000_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-012000 | PATCH | Access to database files must be limited to relevant processes and to authorized, administrative users."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  file:
+      path: "{{ pgs9stig_pgdata }}"
+      mode: go-rwx
+      owner: "{{ pgs9stig_postgres_user }}"
+      group: "{{ pgs9stig_postgres_user }}"
+      recurse: yes
   when:
       - pgs9_00_012000
   tags:
       - PGS9-00-012000
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-012200 | PostgreSQL must protect its audit configuration from unauthorized modification."
   block:
