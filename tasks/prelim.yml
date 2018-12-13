@@ -6,8 +6,13 @@
       filter: ansible_mounts
   when:
       - ansible_mounts is not defined
+      - pgs9_00_008000 or
+        pgs9_00_008200
   tags:
-      - always
+      - cat1
+      - high
+      - PGS9-00-008000
+      - PGS9-00-008200
 
 - name: "PRELIM | PGS9-00-008000 | Check if /boot or /boot/efi reside on separate partitions"
   shell: df --output=target /boot | tail -n 1
@@ -15,11 +20,13 @@
   check_mode: no
   register: pgs9_00_boot_part
   when:
-      - pgs9_00_008000
+      - pgs9_00_008000 or
+        pgs9_00_008200
   tags:
       - cat1
       - high
       - PGS9-00-008000
+      - PGS9-00-008200
 
 - name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
   block:
