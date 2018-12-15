@@ -764,24 +764,12 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-004500 | PostgreSQL must generate audit records when unsuccessful attempts to access security objects occur."
-  block:
-      - name: "MEDIUM | PGS9-00-004500 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to access security objects occur."
-        command: "true"
-        register: pgs9_00_004500_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-004500 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to access security objects occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: "All denials are logged if logging is enabled.  Logging is configured in PRELIM."
   when:
       - pgs9_00_004500
   tags:
       - PGS9-00-004500
-      - notimplemented
 
 - name: |
       "MEDIUM | PGS9-00-004600 PGS9-00-004700 | PostgreSQL must generate audit records when unsuccessful logons or connection attempts occur."
