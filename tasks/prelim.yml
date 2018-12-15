@@ -50,21 +50,38 @@
   tags:
       - always
 
-- name: "PRELIM | PGS9-00-003700 | Appendix C: Logging | stderr"
-  lineinfile:
-      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
-  module_defaults: "{{ pgs9stig_lineinfile }}"
-  notify: reload postgres
-  with_dict:
-      log_destination: "'stderr'"
-      logging_collector: "on"
-      log_directory: "'pg_log'"
-      log_filename: "'postgresql-%a.log'"
-      log_file_mode: "0600"
-      log_truncate_on_rotation: "on"
-      log_rotation_age: "1d"
-      log_rotation_size: 0
-  when: pgs9stig_log_destination == 'stderr'
+- name: "PRELIM | PGS9-00-003700 PGS9-00-004500 | Appendix C: Logging"
+  block:
+      - name: "PRELIM | PGS9-00-003700 PGS9-00-004500 | Appendix C: Logging | stderr"
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: reload postgres
+        with_dict:
+            log_destination: "'stderr'"
+            logging_collector: "on"
+            log_directory: "'pg_log'"
+            log_filename: "'postgresql-%a.log'"
+            log_file_mode: "0600"
+            log_truncate_on_rotation: "on"
+            log_rotation_age: "1d"
+            log_rotation_size: 0
+        when: pgs9stig_log_destination == 'stderr'
+
+      - name: "PRELIM | PGS9-00-003700 PGS9-00-004500 | Appendix C: Logging | syslog"
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: reload postgres
+        with_dict:
+            log_destination: "'syslog'"
+            syslog_facility: "'LOCAL0'"
+            syslog_ident: "'postgres'"
+        when: pgs9stig_log_destination == 'syslog'
+  when:
+      - pgs9_00_003700 or
+        pgs9_00_004500
   tags:
       - always
       - PGS9-00-003700
+      - PGS9-00-004500
