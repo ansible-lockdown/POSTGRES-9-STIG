@@ -1158,24 +1158,12 @@
       - PGS9-00-006800
 
 - name: "MEDIUM | PGS9-00-006900 | PostgreSQL must generate audit records when unsuccessful attempts to add privileges/permissions occur."
-  block:
-      - name: "MEDIUM | PGS9-00-006900 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to add privileges/permissions occur."
-        command: "true"
-        register: pgs9_00_006900_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006900 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to add privileges/permissions occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: "All denials are logged by default if logging is enabled.  Logging is configured in PRELIM."
   when:
       - pgs9_00_006900
   tags:
       - PGS9-00-006900
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-007000 | PostgreSQL, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation."
   block:
