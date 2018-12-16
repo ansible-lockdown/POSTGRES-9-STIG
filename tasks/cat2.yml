@@ -54,27 +54,31 @@
 - name: |
       "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
       "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+      "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
   block:
       - name: |
             "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
             "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+            "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
         lineinfile:
             path: "{{ pgs9stig_rsyslog_conf }}"
             line: $umask 0077
             insertbefore: BOF
         notify: restart rsyslog
 
-      - name: "MEDIUM | PGS9-00-000400 PGS9-00-002300 | Verify log access on disk."
+      - name: "MEDIUM | PGS9-00-000400 PGS9-00-002300 PGS9-00-004200 | Verify log access on disk."
         file:
             path: "{{ pgs9stig_rsyslog_log_path }}"
             mode: go-rwx
   when:
       - pgs9_00_000400 or
-        pgs9_00_002300
+        pgs9_00_002300 or
+        pgs9_00_004200
       - pgs9stig_with_rsyslog
   tags:
       - PGS9-00-000400
       - PGS9-00-002300
+      - PGS9-00-004200
 
 - name: |
       "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
@@ -709,6 +713,7 @@
   when:
       - pgs9_00_004200
       - pgs9stig_log_destination == 'syslog'
+      - not pgs9stig_with_rsyslog
   tags:
       - PGS9-00-004200
 
@@ -716,7 +721,7 @@
   block:
       - name: "MEDIUM | PGS9-00-004200 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized read access."
         find:
-           path: "{{ pgs9stig_log_directory }}"
+            path: "{{ pgs9stig_log_directory }}"
         register: pgs9_00_004200_audit
         changed_when: pgs9_00_004200_audit.files | length == 0
 
@@ -730,6 +735,7 @@
         when: pgs9_00_004200_audit is changed
   when:
       - pgs9_00_004200
+      - pgs9stig_log_destination == 'stderr'
   tags:
       - PGS9-00-004200
 
