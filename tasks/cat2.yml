@@ -1096,24 +1096,18 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-006500 | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
-  block:
-      - name: "MEDIUM | PGS9-00-006500 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
-        command: "true"
-        register: pgs9_00_006500_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006500 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          "System documentation should include a definition of the functionality considered privileged."
+          "All denials are logged by default if logging is enabled."
+          Logging is configured in PRELIM.
+  changed_when:
+      - pgs9stig_warn_docs
+      - not pgs9stig_doc_006500
   when:
       - pgs9_00_006500
   tags:
       - PGS9-00-006500
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006600 | PostgreSQL must generate audit records when security objects are modified."
   block:
