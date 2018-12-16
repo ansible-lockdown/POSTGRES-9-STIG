@@ -844,24 +844,12 @@
       - PGS9-00-010400
 
 - name: "MEDIUM | PGS9-00-004800 | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
-  block:
-      - name: "MEDIUM | PGS9-00-004800 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
-        command: "true"
-        register: pgs9_00_004800_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-004800 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to modify security objects occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: "Unsuccessful attempts to modifying security objects can be logged if logging is enabled.  Logging is configured in PRELIM."
   when:
       - pgs9_00_004800
   tags:
       - PGS9-00-004800
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-004900 | PostgreSQL must generate audit records when privileges/permissions are added."
   block:
