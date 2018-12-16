@@ -57,6 +57,7 @@ pgs9stig_log_line_prefix: "'< %m %a %u %d %r %p %c %s >'"
 pgs9stig_doc_001200: no
 pgs9stig_max_connections: 100
 pgs9stig_doc_003700: no
+pgs9stig_doc_006500: no
 
 
 # STIG items that require manual verification (squashes "changed" for these)
