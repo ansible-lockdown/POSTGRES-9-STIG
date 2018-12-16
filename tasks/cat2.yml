@@ -1683,24 +1683,16 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-011100 | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
-  block:
-      - name: "MEDIUM | PGS9-00-011100 | AUDIT | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
-        command: "true"
-        register: pgs9_00_011100_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-011100 | PATCH | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  lineinfile:
+      path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+  module_defaults: "{{ pgs9stig_lineinfile }}"
+  notify: reload postgres
+  with_dict:
+      log_line_prefix: "{{ pgs9stig_log_line_prefix }}"
   when:
       - pgs9_00_011100
   tags:
       - PGS9-00-011100
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-011200 | PostgreSQL must protect its audit features from unauthorized removal."
   block:
