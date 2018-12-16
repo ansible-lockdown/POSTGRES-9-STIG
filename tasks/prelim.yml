@@ -50,9 +50,9 @@
   tags:
       - always
 
-- name: "PRELIM | PGS9-00-003700 PGS9-00-004500 | Appendix C: Logging"
+- name: "PRELIM | Appendix C: Logging"
   block:
-      - name: "PRELIM | PGS9-00-003700 PGS9-00-004500 | Appendix C: Logging | stderr"
+      - name: "PRELIM | Appendix C: Logging | stderr"
         lineinfile:
             path: "{{ pgs9stig_pgdata }}/postgresql.conf"
         module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -68,7 +68,7 @@
             log_rotation_size: 0
         when: pgs9stig_log_destination == 'stderr'
 
-      - name: "PRELIM | PGS9-00-003700 PGS9-00-004500 | Appendix C: Logging | syslog"
+      - name: "PRELIM | Appendix C: Logging | syslog"
         lineinfile:
             path: "{{ pgs9stig_pgdata }}/postgresql.conf"
         module_defaults: "{{ pgs9stig_lineinfile }}"
@@ -110,9 +110,22 @@
       - pgs9_00_000400 or
         pgs9_00_003700 or
         pgs9_00_004200 or
-        pgs9_00_004500
+        pgs9_00_004500 or
+        pgs9_00_004600 or
+        pgs9_00_004700 or
+        pgs9_00_004800 or
+        pgs9_00_005100 or
+        pgs9_00_006200 or
+        pgs9_00_010400 or
+        false
   tags:
       - PGS9-00-000400
       - PGS9-00-003700
       - PGS9-00-004200
       - PGS9-00-004500
+      - PGS9-00-004600
+      - PGS9-00-004700
+      - PGS9-00-004800
+      - PGS9-00-005100
+      - PGS9-00-006200
+      - PGS9-00-010400
