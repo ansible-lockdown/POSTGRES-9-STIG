@@ -34,8 +34,8 @@
 
 
 - name: |
-      "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
-      "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+      "MEDIUM | PGS9-00-000400 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized modification."
+      "MEDIUM | PGS9-00-002300 | AUDIT | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
   debug:
       msg: "If the PostgreSQL server is configured to use syslog for logging, consult the organization syslog setting for permissions and ownership of logs."
   changed_when:
@@ -46,6 +46,32 @@
       - pgs9_00_000400 or
         pgs9_00_002300
       - pgs9stig_log_destination == 'syslog'
+      - not pgs9stig_with_rsyslog
+  tags:
+      - PGS9-00-000400
+      - PGS9-00-002300
+
+- name: |
+      "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
+      "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+  block:
+      - name: |
+            "MEDIUM | PGS9-00-000400 | The audit information produced by PostgreSQL must be protected from unauthorized modification."
+            "MEDIUM | PGS9-00-002300 | The audit information produced by PostgreSQL must be protected from unauthorized deletion."
+        lineinfile:
+            path: "{{ pgs9stig_rsyslog_conf }}"
+            line: $umask 0077
+            insertbefore: BOF
+        notify: restart rsyslog
+
+      - name: "MEDIUM | PGS9-00-000400 PGS9-00-002300 | Verify log access on disk."
+        file:
+            path: "{{ pgs9stig_rsyslog_log_path }}"
+            mode: go-rwx
+  when:
+      - pgs9_00_000400 or
+        pgs9_00_002300
+      - pgs9stig_with_rsyslog
   tags:
       - PGS9-00-000400
       - PGS9-00-002300

@@ -15,7 +15,17 @@ pgs9stig_postgres_service: postgresql-9.6
 # possible values: stderr, syslog
 pgs9stig_log_destination: stderr
 
+# only takes effect for stderr logging
 pgs9stig_log_directory: "{{ pgs9stig_pgdata }}/pg_log"
+
+# Configure rsyslog and logrotate
+# only takse effect for syslog logging
+pgs9stig_configure_rsyslog: yes
+
+# only takes effect for syslog logging with rsyslog
+pgs9stig_rsyslog_log_path: /var/log/postgres
+pgs9stig_rsyslog_conf: /etc/rsyslog.d/postgres.conf
+
 
 # Show Changed for values requiring local documentation
 pgs9stig_warn_docs: yes

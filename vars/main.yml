@@ -10,6 +10,9 @@ pgs9stig_disruptive: "{{ pgs9stig_disruption_high or pgs9stig_audit_disruptive }
 pgs9stig_complex_check_mode: "{{ ansible_check_mode or pgs9stig_audit_complex and not pgs9stig_complexity_high }}"
 pgs9stig_disruptive_check_mode: "{{ ansible_check_mode or pgs9stig_audit_disruptive and not pgs9stig_disruption_high }}"
 
+# True if we have configured rsyslog
+pgs9stig_with_rsyslog: "{{ pgs9stig_configure_rsyslog and pgs9stig_log_destination == 'syslog' }}"
+
 # this allows us to insert a name=value into a line of the format:
 # key="name1=value1 name2=value2 nameN=valueN"
 pgs9stig_regexp_quoted_params: ^({{ pgs9stig_re_qp_key }})({{ pgs9stig_re_qp_other_params }})({{
