@@ -1749,22 +1749,34 @@
 - name: "MEDIUM | PGS9-00-011300 | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
   block:
       - name: "MEDIUM | PGS9-00-011300 | AUDIT | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
-        command: "true"
-        register: pgs9_00_011300_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-011300 | PATCH | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: |
+                "If log_destination is not syslog, this is a finding."
+                CURRENT LOG DESTINATION: {{ pgs9stig_log_destination }}
+        changed_when:
+            - pgs9stig_log_destination != 'syslog'
+            - pgs9stig_warn_finding
+
+      - name: "MEDIUM | PGS9-00-011300 | AUDIT | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
+        debug:
+            msg: |
+                Check with the organization to see how syslog facilities are defined in their organization.
+                If the wrong facility is configured, this is a finding.
+        changed_when:
+            - pgs9stig_warn_docs
+            - not pgs9stig_doc_011300
+
+      - name: "MEDIUM | PGS9-00-011300 | AUDIT | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
+        debug:
+            msg: |
+                If PostgreSQL does not have a continuous network connection to the centralized log management system, and PostgreSQL audit records are not transferred to the centralized log management system weekly or more often, this is a finding.
+        changed_when:
+            - pgs9stig_warn_manual
+            - not pgs9stig_manual_011300
   when:
       - pgs9_00_011300
   tags:
       - PGS9-00-011300
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-011400 | PostgreSQL must maintain the authenticity of communications sessions by guarding against man-in-the-middle attacks that guess at Session ID values."
   block:
