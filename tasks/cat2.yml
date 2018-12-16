@@ -1858,25 +1858,54 @@
   tags:
       - PGS9-00-012000
 
+
 - name: "MEDIUM | PGS9-00-012200 | PostgreSQL must protect its audit configuration from unauthorized modification."
   block:
+      - name: "MEDIUM | PGS9-00-012200 | PostgreSQL must protect its audit configuration from unauthorized modification."
+        file:
+            path: "{{ pgs9stig_pgdata }}"
+            mode: go-rwx
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
+            recurse: yes
+
+      - name: "MEDIUM | PGS9-00-012200 | PostgreSQL must protect its audit configuration from unauthorized modification."
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: reload postgres
+        with_dict:
+            log_file_mode: "0600"
+        when: pgs9stig_log_destination == 'stderr'
+
+      - name: "MEDIUM | PGS9-00-012200 | PostgreSQL must protect its audit configuration from unauthorized modification."
+        lineinfile:
+            path: "{{ pgs9stig_rsyslog_conf }}"
+            line: $umask 0077
+            insertbefore: BOF
+        notify: restart rsyslog
+        when: pgs9stig_with_rsyslog
+
+      - name: "MEDIUM | PGS9-00-012200 | Verify log access on disk."
+        file:
+            path: "{{ pgs9stig_rsyslog_log_path }}"
+            mode: go-rwx
+        when: pgs9stig_with_rsyslog
+
       - name: "MEDIUM | PGS9-00-012200 | AUDIT | PostgreSQL must protect its audit configuration from unauthorized modification."
-        command: "true"
-        register: pgs9_00_012200_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-012200 | PATCH | PostgreSQL must protect its audit configuration from unauthorized modification."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: "If PostgreSQL is configured to use syslog, verify that the logs are owned by root and have 0600 permissions. If they are not, this is a finding."
+        changed_when:
+            - pgs9stig_warn_manual
+            - not pgs9stig_manual_012200
+        when:
+            - pgs9stig_log_destination == 'syslog'
+            - not pgs9stig_with_rsyslog
   when:
       - pgs9_00_012200
   tags:
       - PGS9-00-012200
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-012500 | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
   block:
