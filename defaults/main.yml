@@ -63,6 +63,7 @@ pgs9stig_doc_003700: no
 # set '{pgs9stig_warn_manual: no}' above to squash all
 pgs9stig_manual_000400: no
 pgs9stig_manual_002300: no
+pgs9stig_manual_003800: no
 pgs9stig_manual_004200: no
 
 
