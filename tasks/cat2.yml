@@ -1638,6 +1638,19 @@
       - PGS9-00-010300
       - notimplemented
 
+- name: "MEDIUM | PGS9-00-010400 | PostgreSQL must produce audit records containing sufficient information to establish what type of events occurred."
+  debug:
+      msg: |
+          "Verify that the current settings are appropriate for the organization." for log_line_prefix
+          "If the audit record does not log events required by the organization, this is a finding."
+  changed_when:
+      - pgs9stig_warn_docs
+      - not pgs9stig_doc_010400
+  when:
+      - pgs9_00_010400
+  tags:
+      - PGS9-00-010400
+
 - name: "MEDIUM | PGS9-00-010500 | PostgreSQL must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
   block:
       - name: "MEDIUM | PGS9-00-010500 | AUDIT | PostgreSQL must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
