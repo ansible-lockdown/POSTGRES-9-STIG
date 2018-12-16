@@ -78,10 +78,39 @@
             syslog_facility: "'LOCAL0'"
             syslog_ident: "'postgres'"
         when: pgs9stig_log_destination == 'syslog'
+
+      - name: "PRELIM | Appendix C: Logging | rsyslog"
+        block:
+            - name: "PRELIM | Appendix C: Logging | install rsyslog"
+              yum:
+                  name: rsyslog
+
+            - name: "PRELIM | Appendix C: Logging | configure rsyslog"
+              blockinfile:
+                  path: "{{ pgs9stig_rsyslog_conf }}"
+                  create: yes
+                  mode: 0644
+                  block: |
+                      # Log postgres items to file
+                      local0.*                                                {{ pgs9stig_rsyslog_log_path }}
+              notify: restart rsyslog
+
+            - name: "PRELIM | Appendix C: Logging | start rsyslog"
+              service:
+                  name: rsyslog
+                  state: started
+
+            - name: "PRELIM | Appendix C: Logging | configure logrotate"
+              lineinfile:
+                  path: /etc/logrotate.d/syslog
+                  insertbefore: ^{$
+                  line: "{{ pgs9stig_rsyslog_log_path }}"
+        when: pgs9stig_with_rsyslog
   when:
-      - pgs9_00_003700 or
+      - pgs9_00_000400 or
+        pgs9_00_003700 or
         pgs9_00_004500
   tags:
-      - always
+      - PGS9-00-000400
       - PGS9-00-003700
       - PGS9-00-004500
