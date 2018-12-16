@@ -33,6 +33,9 @@ pgs9stig_warn_docs: yes
 # Show Changed for items requiring manual verification
 pgs9stig_warn_manual: yes
 
+# Show Changed for uncorrected open findings
+pgs9stig_warn_finding: yes
+
 
 # log_line_prefix
 # PGS9-00-000200: '< %m %u %d %e: >'
@@ -59,6 +62,7 @@ pgs9stig_max_connections: 100
 pgs9stig_doc_003700: no
 pgs9stig_doc_006500: no
 pgs9stig_doc_010400: no
+pgs9stig_doc_011300: no
 
 
 # STIG items that require manual verification (squashes "changed" for these)
@@ -67,6 +71,7 @@ pgs9stig_manual_000400: no
 pgs9stig_manual_002300: no
 pgs9stig_manual_003800: no
 pgs9stig_manual_004200: no
+pgs9stig_manual_011300: no
 
 
 # PGS9-00-000100
