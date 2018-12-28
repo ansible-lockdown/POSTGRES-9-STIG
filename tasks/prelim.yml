@@ -36,7 +36,7 @@
             state: started
 
       - name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
-        shell: psql -c 'show data_directory' | tail -n+3 | head -n 1 | cut -c2-
+        shell: set -o pipefail ; psql -c 'show data_directory' | tail -n+3 | head -n 1 | cut -c2-
         check_mode: no
         changed_when: no
         register: pgs9stig_pgdata_cmd
