@@ -50,6 +50,39 @@
   tags:
       - always
 
+
+- name: "PRELIM | Appendix B: pgaudit"
+  block:
+      - name: "PRELIM | Appendix B: install pgaudit"
+        package:
+            name: "{{ pgs9stig_pgaudit_packages }}"
+
+      - name: "PRELIM | Appendix B: configure pgaudit"
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        register: pgs9stig_pgaudit_conf_install
+        notify: restart postgres
+        with_dict:
+            shared_preload_libraries: "'pgaudit'"
+            pgaudit.log_catalog: "'on'"
+            pgaudit.log_level: "'log'"
+            pgaudit.log_parameter: "'on'"
+            pgaudit.log_relation: "'off'"
+            pgaudit.log_statement_once: "'off'"
+            pgaudit.log: "{{ pgs9stig_pgaudit_log }}"
+
+      - name: "PRELIM | Appendix C: Logging | reload postgres"
+        service:
+            name: "{{ pgs9stig_postgres_service }}"
+            state: reloaded
+        when:
+            - pgs9stig_pgaudit_conf_install is changed
+  tags:
+      - cat2
+      - medium
+
+
 - name: "PRELIM | Appendix C: Logging"
   block:
       - name: "PRELIM | Appendix C: Logging | stderr"

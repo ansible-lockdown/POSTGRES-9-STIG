@@ -7,6 +7,9 @@ pgs9stig_cat3: yes
 pgs9stig_postgres_packages:
     - "*postgresql*"
 
+pgs9stig_pgaudit_packages:
+    - pgaudit11_96
+
 pgs9stig_postgres_user: postgres
 pgs9stig_postgres_service: postgresql-9.6
 
@@ -53,6 +56,29 @@ pgs9stig_warn_finding: yes
 # PGS9-00-012600: '< %m %u %c: >'
 # this line includes all of the above except %i %e, not explicitly required
 pgs9stig_log_line_prefix: "'< %m %a %u %d %r %p %c %s >'"
+
+# pgaudit.log
+# PGS9-00-000200: 'all, -misc'
+# PGS9-00-004400: If pgaudit.log does not contain, "ddl, write, role", this is a finding. 'ddl, write, role'
+# PGS9-00-004900: 'role'
+# PGS9-00-005000: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-005200: 'ddl'
+# PGS9-00-005500: 'read'
+# PGS9-00-005600: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-005800: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-005900: If pgaudit.log does not contain, "ddl, write, role", this is a finding. 'ddl, write, role'
+# PGS9-00-006000: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-006100: If the output does not contain role, read, write, and ddl, this is a finding. 'role'
+# PGS9-00-006300: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-006400: If the output does not contain role, this is a finding. 'role'
+# PGS9-00-006600: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-006700: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-009800: If pgaudit.log does not contain ddl, role, read, write, function this is a finding. 'write, ddl, role, read, function'
+# PGS9-00-010000: 'role'
+# PGS9-00-012500: If the output does not contain role, read, write, and ddl, this is a finding. 'ddl, role, read, write'
+# PGS9-00-012600: If the output does not contain role, read, write, and ddl, this is a finding. 'read, write'
+# PGS9-00-012600: 'ddl, role, read, write'
+pgs9stig_pgaudit_log: "'write, ddl, role, read, function'"
 
 
 # STIG items that have been documented locally (squashes "changed" for these)
