@@ -41,7 +41,7 @@
         changed_when: no
         register: pgs9stig_pgdata_cmd
         become: yes
-        become_user: postgres
+        become_user: "{{ pgs9stig_postgres_user }}"
 
       - name: "PRELIM | make pgdata available as variable"
         set_fact:
