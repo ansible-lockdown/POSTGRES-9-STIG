@@ -4,4 +4,4 @@
   connection: local
   become: yes
   roles:
-  - "{{ playbook_dir }}"
+      - "{{ playbook_dir }}"

@@ -171,7 +171,7 @@
         yum:
             name: openssl
 
-      - name: "HIGH | PGS9-00-012300 | AUDIT | Check for FIPS validated version of openssl" 
+      - name: "HIGH | PGS9-00-012300 | AUDIT | Check for FIPS validated version of openssl"
         shell: openssl version | grep 'fips'
         register: pgs9stig_openssl_fips_check
         failed_when: no
