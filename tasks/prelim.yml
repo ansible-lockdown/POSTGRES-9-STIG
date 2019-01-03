@@ -82,12 +82,14 @@
       - pgs9stig_configure_pgaudit
       - pgs9_00_000200 or
         pgs9_00_004400 or
+        pgs9_00_004900 or
         false
   tags:
       - cat2
       - medium
       - PGS9-00-000200
       - PGS9-00-004400
+      - PGS9-00-004900
 
 
 - name: "PRELIM | Appendix C: Logging"
