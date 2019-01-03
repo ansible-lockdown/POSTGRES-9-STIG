@@ -923,24 +923,17 @@
       - PGS9-00-005500
 
 - name: "MEDIUM | PGS9-00-005600 | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
-  block:
-      - name: "MEDIUM | PGS9-00-005600 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
-        command: "true"
-        register: pgs9_00_005600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-005600 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_005600
   tags:
       - PGS9-00-005600
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-005700 | PostgreSQL must generate audit records when unsuccessful accesses to objects occur."
   debug:
