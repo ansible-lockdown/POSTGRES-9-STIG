@@ -5,20 +5,20 @@
 - name: Include CAT 1 patches
   import_tasks: cat1.yml
   when: pgs9stig_cat1
-  tags: 
-    - cat1
-    - high
+  tags:
+      - cat1
+      - high
 
 - name: Include CAT 2 patches
   import_tasks: cat2.yml
   when: pgs9stig_cat2
-  tags: 
-    - cat2
-    - medium
+  tags:
+      - cat2
+      - medium
 
 - name: Include CAT 3 patches
   import_tasks: cat3.yml
   when: pgs9stig_cat3
-  tags: 
-    - cat3
-    - low
+  tags:
+      - cat3
+      - low
