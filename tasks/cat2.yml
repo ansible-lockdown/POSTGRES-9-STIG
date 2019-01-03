@@ -13,24 +13,19 @@
       - PGS9-00-000100
 
 - name: "MEDIUM | PGS9-00-000200 | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
-  block:
-      - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
-        command: "true"
-        register: pgs9_00_000200_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-000200 | PATCH | PostgreSQL must produce audit records containing sufficient information to establish the outcome (success or failure) of the events."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          "Using pgaudit PostgreSQL can be configured to audit various facets of PostgreSQL."
+          "All errors, denials and unsuccessful requests are logged if logging is enabled."
+          Logging and pgaudit are configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_000200
   tags:
       - PGS9-00-000200
-      - notimplemented
 
 
 - name: |

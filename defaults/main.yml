@@ -7,6 +7,7 @@ pgs9stig_cat3: yes
 pgs9stig_postgres_packages:
     - "*postgresql*"
 
+pgs9stig_configure_pgaudit: yes
 pgs9stig_pgaudit_packages:
     - pgaudit11_96
 

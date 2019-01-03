@@ -78,9 +78,14 @@
             state: reloaded
         when:
             - pgs9stig_pgaudit_conf_install is changed
+  when:
+      - pgs9stig_configure_pgaudit
+      - pgs9_00_000200 or
+        false
   tags:
       - cat2
       - medium
+      - PGS9-00-000200
 
 
 - name: "PRELIM | Appendix C: Logging"
@@ -149,7 +154,8 @@
               pgs9stig_log_syslog_result is changed or
               pgs9stig_rsyslog_conf_result is changed
   when:
-      - pgs9_00_000400 or
+      - pgs9_00_000200 or
+        pgs9_00_000400 or
         pgs9_00_003700 or
         pgs9_00_004200 or
         pgs9_00_004500 or
@@ -169,6 +175,9 @@
         pgs9_00_011300 or
         false
   tags:
+      - cat2
+      - medium
+      - PGS9-00-000200
       - PGS9-00-000400
       - PGS9-00-003700
       - PGS9-00-004200
