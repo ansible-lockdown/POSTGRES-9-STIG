@@ -88,6 +88,7 @@
         pgs9_00_005500 or
         pgs9_00_005600 or
         pgs9_00_005900 or
+        pgs9_00_006000 or
         false
   tags:
       - cat2
@@ -100,6 +101,7 @@
       - PGS9-00-005500
       - PGS9-00-005600
       - PGS9-00-005900
+      - PGS9-00-006000
 
 
 - name: "PRELIM | Appendix C: Logging"

@@ -977,24 +977,17 @@
       - PGS9-00-005900
 
 - name: "MEDIUM | PGS9-00-006000 | PostgreSQL must be able to generate audit records when security objects are accessed."
-  block:
-      - name: "MEDIUM | PGS9-00-006000 | AUDIT | PostgreSQL must be able to generate audit records when security objects are accessed."
-        command: "true"
-        register: pgs9_00_006000_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006000 | PATCH | PostgreSQL must be able to generate audit records when security objects are accessed."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_006000
   tags:
       - PGS9-00-006000
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006100 | PostgreSQL must generate audit records when privileges/permissions are deleted."
   block:
