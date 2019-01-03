@@ -695,25 +695,23 @@
       - PGS9-00-004000
       - notimplemented
 
+
 - name: "MEDIUM | PGS9-00-004100 | PostgreSQL must produce audit records of its enforcement of access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
   block:
       - name: "MEDIUM | PGS9-00-004100 | AUDIT | PostgreSQL must produce audit records of its enforcement of access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
-        command: "true"
-        register: pgs9_00_004100_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        debug:
+            msg: "All denials are logged if logging is enabled.  Logging is configured in PRELIM."
+
       - name: "MEDIUM | PGS9-00-004100 | PATCH | PostgreSQL must produce audit records of its enforcement of access restrictions associated with changes to the configuration of PostgreSQL or database(s)."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        file:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+            mode: u+rw
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
   when:
       - pgs9_00_004100
   tags:
       - PGS9-00-004100
-      - notimplemented
 
 
 - name: "MEDIUM | PGS9-00-004200 | The audit information produced by PostgreSQL must be protected from unauthorized read access."
