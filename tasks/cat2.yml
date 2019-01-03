@@ -463,25 +463,42 @@
       - PGS9-00-002500
       - notimplemented
 
+
 - name: "MEDIUM | PGS9-00-002600 | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
   block:
+      - name: "MEDIUM | PGS9-00-002600 | PATCH | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
+        file:
+            path: "{{ pgs9stig_pgdata }}"
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
+            recurse: yes
+
       - name: "MEDIUM | PGS9-00-002600 | AUDIT | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
-        command: "true"
+        shell: set -o pipefail ; psql -c '\du' | grep Superuser | awk '{print $1}'
+        become_user: "{{ pgs9stig_postgres_user }}"
         register: pgs9_00_002600_audit
         check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        changed_when: disallowed_superusers | length != 0
+
+      - name: "MEDIUM | PGS9-00-002600 | AUDIT | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
+        debug:
+            msg: |
+                Found unauthorized superusers:
+                {{ disallowed_superusers | join('\n') }}
+        changed_when: yes
+        when: pgs9_00_002600_audit is changed
+
       - name: "MEDIUM | PGS9-00-002600 | PATCH | PostgreSQL must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        command: psql -c 'alter user {{ item }} with nosuperuser ;'
+        become_user: "{{ pgs9stig_postgres_user }}"
+        with_items: "{{ disallowed_superusers }}"
+  vars:
+      disallowed_superusers: "{{ pgs9_00_002600_audit.stdout_lines | difference(pgs9stig_allowed_superusers) }}"
   when:
       - pgs9_00_002600
   tags:
       - PGS9-00-002600
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-002700 | PostgreSQL must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts."
   block:
