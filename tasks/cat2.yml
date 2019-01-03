@@ -990,64 +990,43 @@
       - PGS9-00-006000
 
 - name: "MEDIUM | PGS9-00-006100 | PostgreSQL must generate audit records when privileges/permissions are deleted."
-  block:
-      - name: "MEDIUM | PGS9-00-006100 | AUDIT | PostgreSQL must generate audit records when privileges/permissions are deleted."
-        command: "true"
-        register: pgs9_00_006100_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006100 | PATCH | PostgreSQL must generate audit records when privileges/permissions are deleted."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_006100
   tags:
       - PGS9-00-006100
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006300 | PostgreSQL must generate audit records when unsuccessful attempts to delete security objects occur."
-  block:
-      - name: "MEDIUM | PGS9-00-006300 | AUDIT | PostgreSQL must generate audit records when unsuccessful attempts to delete security objects occur."
-        command: "true"
-        register: pgs9_00_006300_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006300 | PATCH | PostgreSQL must generate audit records when unsuccessful attempts to delete security objects occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_006300
   tags:
       - PGS9-00-006300
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006400 | PostgreSQL must generate audit records when privileges/permissions are modified."
-  block:
-      - name: "MEDIUM | PGS9-00-006400 | AUDIT | PostgreSQL must generate audit records when privileges/permissions are modified."
-        command: "true"
-        register: pgs9_00_006400_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006400 | PATCH | PostgreSQL must generate audit records when privileges/permissions are modified."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_006400
   tags:
       - PGS9-00-006400
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006500 | PostgreSQL must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
   debug:
@@ -1064,44 +1043,30 @@
       - PGS9-00-006500
 
 - name: "MEDIUM | PGS9-00-006600 | PostgreSQL must generate audit records when security objects are modified."
-  block:
-      - name: "MEDIUM | PGS9-00-006600 | AUDIT | PostgreSQL must generate audit records when security objects are modified."
-        command: "true"
-        register: pgs9_00_006600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006600 | PATCH | PostgreSQL must generate audit records when security objects are modified."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_006600
   tags:
       - PGS9-00-006600
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006700 | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is modified."
-  block:
-      - name: "MEDIUM | PGS9-00-006700 | AUDIT | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is modified."
-        command: "true"
-        register: pgs9_00_006700_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-006700 | PATCH | PostgreSQL must generate audit records when categorized information (e.g., classification levels/security levels) is modified."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_006700
   tags:
       - PGS9-00-006700
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-006800 | PostgreSQL must generate audit records when unsuccessful attempts to modify privileges/permissions occur."
   debug:
