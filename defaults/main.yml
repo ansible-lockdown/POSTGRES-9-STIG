@@ -14,6 +14,8 @@ pgs9stig_pgaudit_packages:
 pgs9stig_postgres_user: postgres
 pgs9stig_postgres_service: postgresql-9.6
 
+pgs9stig_allowed_superusers:
+    - "{{ pgs9stig_postgres_user }}"
 
 # Appendix C: Logging
 # possible values: stderr, syslog
