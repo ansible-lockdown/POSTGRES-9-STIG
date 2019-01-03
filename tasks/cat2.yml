@@ -910,24 +910,17 @@
       - PGS9-00-005400
 
 - name: "MEDIUM | PGS9-00-005500 | PostgreSQL must be able to generate audit records when privileges/permissions are retrieved."
-  block:
-      - name: "MEDIUM | PGS9-00-005500 | AUDIT | PostgreSQL must be able to generate audit records when privileges/permissions are retrieved."
-        command: "true"
-        register: pgs9_00_005500_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-005500 | PATCH | PostgreSQL must be able to generate audit records when privileges/permissions are retrieved."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_005500
   tags:
       - PGS9-00-005500
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-005600 | PostgreSQL must generate audit records when unsuccessful attempts to modify categorized information (e.g., classification levels/security levels) occur."
   block:
