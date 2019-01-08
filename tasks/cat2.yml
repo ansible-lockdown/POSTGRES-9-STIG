@@ -1252,24 +1252,19 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-008600 | PostgreSQL must initiate session auditing upon startup."
-  block:
-      - name: "MEDIUM | PGS9-00-008600 | AUDIT | PostgreSQL must initiate session auditing upon startup."
-        command: "true"
-        register: pgs9_00_008600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-008600 | PATCH | PostgreSQL must initiate session auditing upon startup."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          "Using pgaudit PostgreSQL can be configured to audit various facets of PostgreSQL."
+          "All errors, denials and unsuccessful requests are logged if logging is enabled."
+          Logging and pgaudit are configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_008600
   tags:
       - PGS9-00-008600
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-008700 | PostgreSQL must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components."
   block:
