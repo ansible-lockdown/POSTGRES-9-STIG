@@ -1488,24 +1488,17 @@
       - notimplemented
 
 - name: "MEDIUM | PGS9-00-010000 | PostgreSQL must provide the means for individuals in authorized roles to change the auditing to be performed on all application components, based on all selectable event criteria within organization-defined time thresholds."
-  block:
-      - name: "MEDIUM | PGS9-00-010000 | AUDIT | PostgreSQL must provide the means for individuals in authorized roles to change the auditing to be performed on all application components, based on all selectable event criteria within organization-defined time thresholds."
-        command: "true"
-        register: pgs9_00_010000_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-010000 | PATCH | PostgreSQL must provide the means for individuals in authorized roles to change the auditing to be performed on all application components, based on all selectable event criteria within organization-defined time thresholds."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_010000
   tags:
       - PGS9-00-010000
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-010100 | PostgreSQL must require users to reauthenticate when organization-defined circumstances or situations require reauthentication."
   block:
