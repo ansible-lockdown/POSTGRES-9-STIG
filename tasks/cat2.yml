@@ -1594,25 +1594,42 @@
   tags:
       - PGS9-00-010600
 
+
 - name: "MEDIUM | PGS9-00-010700 | PostgreSQL must protect its audit features from unauthorized access."
   block:
+      - name: "MEDIUM | PGS9-00-010700 | PATCH | PostgreSQL must protect its audit features from unauthorized access."
+        file:
+            path: "{{ pgs9stig_log_directory }}"
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
+            recurse: yes
+
+      - name: "MEDIUM | PGS9-00-010700 | PATCH | PostgreSQL must protect its audit features from unauthorized access."
+        file:
+            path: "{{ pgs9stig_pgdata }}"
+            owner: "{{ pgs9stig_postgres_user }}"
+            group: "{{ pgs9stig_postgres_user }}"
+            recurse: yes
+
       - name: "MEDIUM | PGS9-00-010700 | AUDIT | PostgreSQL must protect its audit features from unauthorized access."
-        command: "true"
+        command: rpm -V {{ pgs9stig_pgaudit_packages | join(" ") }}
+        args:
+            warn: no
         register: pgs9_00_010700_audit
         check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
+        failed_when: no
+        changed_when: pgs9_00_010700_audit.stdout != ""
+
       - name: "MEDIUM | PGS9-00-010700 | PATCH | PostgreSQL must protect its audit features from unauthorized access."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        shell: rpm --setugids {{ pgs9stig_pgaudit_packages | join(" ") }} ; rpm --setperms {{ pgs9stig_pgaudit_packages | join(" ") }}
+        args:
+            warn: no
+        when: pgs9_00_010700_audit is changed
   when:
       - pgs9_00_010700
   tags:
       - PGS9-00-010700
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-011100 | PostgreSQL must produce audit records containing time stamps to establish when the events occurred."
   lineinfile:
