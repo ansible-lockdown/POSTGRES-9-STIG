@@ -1441,25 +1441,31 @@
       - PGS9-00-009700
       - notimplemented
 
+
 - name: "MEDIUM | PGS9-00-009800 | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
   block:
-      - name: "MEDIUM | PGS9-00-009800 | AUDIT | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
-        command: "true"
-        register: pgs9_00_009800_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
       - name: "MEDIUM | PGS9-00-009800 | PATCH | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: reload postgres
+        with_dict:
+            log_connections: "on"
+            log_disconnections: "on"
+
+      - name: "MEDIUM | PGS9-00-009800 | AUDIT | PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session."
+        debug:
+            msg: |
+                pgaudit is configured in PRELIM
+                {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+        changed_when:
+            - not pgs9stig_configure_pgaudit
+            - pgs9stig_warn_finding
   when:
       - pgs9_00_009800
   tags:
       - PGS9-00-009800
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-009900 | The system must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75% of maximum audit record storage capacity."
   block:
