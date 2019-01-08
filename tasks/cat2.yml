@@ -1864,24 +1864,17 @@
       - PGS9-00-012500
 
 - name: "MEDIUM | PGS9-00-012600 | PostgreSQL must generate audit records when successful accesses to objects occur."
-  block:
-      - name: "MEDIUM | PGS9-00-012600 | AUDIT | PostgreSQL must generate audit records when successful accesses to objects occur."
-        command: "true"
-        register: pgs9_00_012600_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-012600 | PATCH | PostgreSQL must generate audit records when successful accesses to objects occur."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_012600
   tags:
       - PGS9-00-012600
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-012700 | PostgreSQL must generate audit records for all direct access to the database(s)."
   block:
