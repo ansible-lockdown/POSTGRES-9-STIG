@@ -1851,24 +1851,17 @@
 
 
 - name: "MEDIUM | PGS9-00-012500 | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
-  block:
-      - name: "MEDIUM | PGS9-00-012500 | AUDIT | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
-        command: "true"
-        register: pgs9_00_012500_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-012500 | PATCH | Audit records must be generated when categorized information (e.g., classification levels/security levels) is deleted."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+  debug:
+      msg: |
+          pgaudit is configured in PRELIM
+          {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+  changed_when:
+      - not pgs9stig_configure_pgaudit
+      - pgs9stig_warn_finding
   when:
       - pgs9_00_012500
   tags:
       - PGS9-00-012500
-      - notimplemented
 
 - name: "MEDIUM | PGS9-00-012600 | PostgreSQL must generate audit records when successful accesses to objects occur."
   block:
