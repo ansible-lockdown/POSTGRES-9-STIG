@@ -1876,22 +1876,27 @@
   tags:
       - PGS9-00-012600
 
+
 - name: "MEDIUM | PGS9-00-012700 | PostgreSQL must generate audit records for all direct access to the database(s)."
   block:
-      - name: "MEDIUM | PGS9-00-012700 | AUDIT | PostgreSQL must generate audit records for all direct access to the database(s)."
-        command: "true"
-        register: pgs9_00_012700_audit
-        check_mode: no
-        changed_when: no
-        with_items:
-            - not implemented
       - name: "MEDIUM | PGS9-00-012700 | PATCH | PostgreSQL must generate audit records for all direct access to the database(s)."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        lineinfile:
+            path: "{{ pgs9stig_pgdata }}/postgresql.conf"
+        module_defaults: "{{ pgs9stig_lineinfile }}"
+        notify: reload postgres
+        with_dict:
+            log_connections: "on"
+            log_disconnections: "on"
+
+      - name: "MEDIUM | PGS9-00-012700 | AUDIT | PostgreSQL must generate audit records for all direct access to the database(s)."
+        debug:
+            msg: |
+                pgaudit is configured in PRELIM
+                {{ pgs9stig_configure_pgaudit | ternary('', 'WARNING: pgaudit configuration was not selected') }}
+        changed_when:
+            - not pgs9stig_configure_pgaudit
+            - pgs9stig_warn_finding
   when:
       - pgs9_00_012700
   tags:
       - PGS9-00-012700
-      - notimplemented
