@@ -1659,25 +1659,32 @@
   tags:
       - PGS9-00-011100
 
+
 - name: "MEDIUM | PGS9-00-011200 | PostgreSQL must protect its audit features from unauthorized removal."
   block:
       - name: "MEDIUM | PGS9-00-011200 | AUDIT | PostgreSQL must protect its audit features from unauthorized removal."
-        command: "true"
+        shell: rpm -qal *postgres* | grep /usr/ | grep -E '/(bin|include|lib|share)$'
+        args:
+            warn: no
         register: pgs9_00_011200_audit
         check_mode: no
         changed_when: no
-        with_items:
-            - not implemented
+
       - name: "MEDIUM | PGS9-00-011200 | PATCH | PostgreSQL must protect its audit features from unauthorized removal."
-        command: "true"
-        changed_when: no
-        with_items:
-            - not implemented
+        file:
+            path: "{{ item }}"
+            owner: root
+            group: root
+        register: pgs9_00_011200_patch
+        failed_when:
+            - pgs9_00_011200_patch is failed
+            - pgs9_00_011200_patch.state != "absent"
+        with_items: "{{ pgs9_00_011200_audit.stdout_lines }}"
   when:
       - pgs9_00_011200
   tags:
       - PGS9-00-011200
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-011300 | PostgreSQL must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems."
   block:
