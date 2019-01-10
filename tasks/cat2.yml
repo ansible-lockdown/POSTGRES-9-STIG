@@ -1341,25 +1341,47 @@
       - PGS9-00-009100
       - notimplemented
 
+# TODO: give this distruption-high treatment
 - name: "MEDIUM | PGS9-00-009200 | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
   block:
       - name: "MEDIUM | PGS9-00-009200 | AUDIT | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
-        command: "true"
-        register: pgs9_00_009200_audit
+        command: rpm -qa *postgres* --qf='%{name}\n'
+        args:
+            warn: no
+        register: pgs9_00_009200_audit_installed
         check_mode: no
         changed_when: no
-        with_items:
-            - not implemented
-      - name: "MEDIUM | PGS9-00-009200 | PATCH | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
-        command: "true"
+
+      - name: "MEDIUM | PGS9-00-009200 | AUDIT | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
+        shell: yumdb search reason dep | grep postgres | xargs rpm -q --qf='%{name}\n'
+        register: pgs9_00_009200_audit_dep
+        check_mode: no
         changed_when: no
-        with_items:
-            - not implemented
+
+      - name: "MEDIUM | PGS9-00-009200 | PATCH | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
+        command: yumdb set reason dep {{ item }}
+        register: pgs9_00_009200_audit_unneeded
+        with_items: "{{ pgs9_00_009200_audit_installed.stdout_lines |
+                difference(pgs9_00_009200_audit_dep.stdout_lines) |
+                difference(pgs9stig_postgres_packages + pgs9stig_pgaudit_packages ) }}"
+
+      - name: "MEDIUM | PGS9-00-009200 | PATCH | Unused database components which are integrated in PostgreSQL and cannot be uninstalled must be disabled."
+        command: yum autoremove{{ ansible_check_mode | ternary('', ' -y') }}
+        check_mode: no
+        args:
+            warn: no
+        register: pgs9_00_009200_patch
+        changed_when:
+            - pgs9_00_009200_patch.stdout != "No Packages marked for removal" or
+              pgs9_00_009200_audit_unneeded.results | length > 0
+        failed_when:
+            - pgs9_00_009200_patch is failed
+            - not ansible_check_mode
   when:
       - pgs9_00_009200
   tags:
       - PGS9-00-009200
-      - notimplemented
+
 
 - name: "MEDIUM | PGS9-00-009400 | PostgreSQL must associate organization-defined types of security labels having organization-defined security label values with information in process."
   block:
