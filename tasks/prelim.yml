@@ -28,13 +28,41 @@
       - PGS9-00-008000
       - PGS9-00-008200
 
-- name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
+
+- name: "PRELIM | Install and start Postgres"
   block:
       - name: "PRELIM | Ensure postgres is started"
         service:
             name: "{{ pgs9stig_postgres_service }}"
             state: started
+  rescue:
+      - name: "PRELIM | Install Postgres packages"
+        package:
+            name: "{{ pgs9stig_postgres_packages }}"
+      - name: "PRELIM | find postgresql-setup binary"
+        shell: rpm -ql {{ pgs9stig_postgres_packages | join(" ") }} | grep bin/postgresql.*-setup$
+        args:
+            warn: no
+        check_mode: no
+        changed_when: no
+        register: pgs9stig_setup_bin
+        failed_when:
+            - pgs9stig_setup_bin is failed or
+              pgs9stig_setup_bin.stdout_lines | count != 1
 
+      - name: "PRELIM | Initialize Postgres Database"
+        command: "{{ pgs9stig_setup_bin.stdout }} initdb"
+
+      - name: "PRELIM | Ensure postgres is started"
+        service:
+            name: "{{ pgs9stig_postgres_service }}"
+            state: started
+  tags:
+      - always
+
+
+- name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
+  block:
       - name: "PRELIM | Appendix F: Finding the PostgreSQL Configured Data Directory (PGDATA)"
         shell: set -o pipefail ; psql -c 'show data_directory' | tail -n+3 | head -n 1 | cut -c2-
         check_mode: no
