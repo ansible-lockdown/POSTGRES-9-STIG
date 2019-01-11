@@ -19,7 +19,7 @@ pgs9stig_allowed_superusers:
 
 # Appendix C: Logging
 # possible values: stderr, syslog
-pgs9stig_log_destination: stderr
+pgs9stig_log_destination: syslog
 
 # only takes effect for stderr logging
 pgs9stig_log_directory: "{{ pgs9stig_pgdata }}/pg_log"
