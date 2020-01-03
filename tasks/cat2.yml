@@ -1688,7 +1688,10 @@
         register: pgs9_00_011200_patch
         failed_when:
             - pgs9_00_011200_patch is failed
-            - pgs9_00_011200_patch.state != "absent"
+            # - pgs9_00_011200_patch.state != "absent"
+            # workaround for https://github.com/ansible/ansible/issues/66171
+            - >-
+              " is absent, cannot continue" not in pgs9_00_011200_patch.msg
         with_items: "{{ pgs9_00_011200_audit.stdout_lines }}"
   when:
       - pgs9_00_011200
