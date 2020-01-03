@@ -13,3 +13,11 @@
   service:
       name: "{{ pgs9stig_postgres_service }}"
       state: reloaded
+
+- name: make grub2 config
+  command: /usr/sbin/grub2-mkconfig --output={{ pgs9stig_grub_cfg_path }}
+  when:
+      - not pgs9stig_system_is_container
+
+- name: rebuild initramfs
+  command: dracut -f
