@@ -42,6 +42,8 @@ pgs9stig_warn_manual: yes
 # Show Changed for uncorrected open findings
 pgs9stig_warn_finding: yes
 
+# tweak role to run in a non-privileged container
+pgs9stig_system_is_container: no
 
 # log_line_prefix
 # PGS9-00-000200: '< %m %u %d %e: >'
@@ -244,3 +246,7 @@ pgs9stig_lineinfile:
         line: "{{ item.key }} = {{ item.value }}"
         regexp: "^{{ item.key | regex_escape }} *="
         insertafter: "#{{ item.key | regex_escape }} *="
+
+
+pgs9stig_machine_uses_uefi: "{{ pgs9_00_sys_firmware_efi.stat.exists }}"
+pgs9stig_grub_cfg_path: "{{ pgs9stig_machine_uses_uefi | ternary('/boot/efi/EFI/' ~ (ansible_distribution | lower) ~ '/grub.cfg', '/boot/grub2/grub.cfg') }}"
