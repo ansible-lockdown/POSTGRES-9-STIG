@@ -1382,7 +1382,8 @@
             warn: no
         register: pgs9_00_009200_patch
         changed_when:
-            - pgs9_00_009200_patch.stdout != "No Packages marked for removal" or
+            - >-
+              "No Packages marked for removal" not in pgs9_00_009200_patch.stdout or
               pgs9_00_009200_audit_unneeded.results | length > 0
         failed_when:
             - pgs9_00_009200_patch is failed
