@@ -1390,6 +1390,7 @@
             - not ansible_check_mode
   when:
       - pgs9_00_009200
+      - ansible_pkg_mgr == 'yum'
   tags:
       - PGS9-00-009200
 
@@ -1696,6 +1697,8 @@
         with_items: "{{ pgs9_00_011200_audit.stdout_lines }}"
   when:
       - pgs9_00_011200
+      - ansible_distribution_major_version is version_compare('7', '==')
+      - ansible_pkg_mgr == 'RedHat'
   tags:
       - PGS9-00-011200
 
