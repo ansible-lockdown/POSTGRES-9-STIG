@@ -4,13 +4,26 @@ pgs9stig_cat1: yes
 pgs9stig_cat2: yes
 pgs9stig_cat3: yes
 
-pgs9stig_postgres_packages:
+pgs9stig_postgres_module_name: postgresql
+pgs9stig_postgres_module_version: 12
+
+pgs9stig_postgres_packages: >-
+    {{ pgs9stig_postgres_packages_simple
+    if ansible_distribution_major_version | default('8') is version_compare('8', '>=')
+    else pgs9stig_postgres_packages_el7 }}
+pgs9stig_postgres_packages_simple:
+    - postgresql-server
+    - postgresql
+pgs9stig_postgres_packages_el7:
     - rh-postgresql12-postgresql-server-syspaths
     - rh-postgresql12-postgresql-syspaths
 
 pgs9stig_configure_pgaudit: yes
 pgs9stig_pgaudit_packages:
-    - rh-postgresql12-pgaudit
+    - >-
+        {{ 'pgaudit'
+        if ansible_distribution_major_version | default('8') is version_compare('8', '>=')
+        else 'rh-postgresql12-pgaudit' }}
 
 pgs9stig_postgres_user: postgres
 pgs9stig_postgres_service: postgresql
