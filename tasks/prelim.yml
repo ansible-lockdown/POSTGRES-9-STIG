@@ -58,6 +58,31 @@
             name: "{{ pgs9stig_postgres_service }}"
             state: started
   rescue:
+      - name: workaround ansible bug
+        meta: noop
+
+      - name: PRELIM | Enable Postgres YUM module
+        block:
+            - name: PRELIM | check current yum module
+              shell: >-
+                  yum module list --enabled {{ pgs9stig_postgres_module_name }}
+                  | grep -E ^{{ pgs9stig_postgres_module_name | regex_escape }}
+                  | awk '{print $2}'
+              check_mode: no
+              register: pgs9stig_discovered_yum_module
+              changed_when: pgs9stig_discovered_yum_module.stdout == ""
+              failed_when: >-
+                  pgs9stig_discovered_yum_module.stdout
+                  | default(pgs9stig_postgres_module_version, True)
+                  is version_compare(pgs9stig_postgres_module_version, '<')
+
+            - name: PRELIM | enable yum module
+              command: yum module enable -y {{ pgs9stig_postgres_module_name }}:{{ pgs9stig_postgres_module_version }}
+              when: pgs9stig_discovered_yum_module is changed
+        when:
+              - ansible_distribution_major_version is version_compare('8', '>=')
+              - ansible_os_family == 'RedHat'
+
       - name: "PRELIM | Install Postgres packages"
         package:
             name: "{{ pgs9stig_postgres_packages }}"
@@ -74,6 +99,14 @@
 
       - name: "PRELIM | Initialize Postgres Database"
         command: "{{ pgs9stig_setup_bin.stdout }} initdb"
+        register: pgs9stig_initdb_result
+        failed_when:
+            - pgs9stig_initdb_result is failed
+            - >-
+                'is not empty!' not in pgs9stig_initdb_result.stderr
+        changed_when:
+            - >-
+                'is not empty!' not in pgs9stig_initdb_result.stderr
 
       - name: "PRELIM | Ensure postgres is started"
         service:
