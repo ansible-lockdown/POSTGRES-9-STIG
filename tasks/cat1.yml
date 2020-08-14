@@ -10,10 +10,20 @@
 #Delivered to the U.S. Government with Unlimited Rights, as defined in DFARS Part 252.227-7013 or 7014 (Feb 2014). Notwithstanding any copyright notice, U.S. Government rights in this work are defined by DFARS 252.227-7013 or DFARS 252.227-7014 as detailed above. Use of this work other than as specifically authorized by the U.S. Government may violate any copyrights that exist in this work.
 
 - name: "HIGH | PGS9-00-000300 | Security-relevant software updates to PostgreSQL must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs)."
-  yum:
-      name: "{{ pgs9stig_postgres_packages }}"
-      state: latest
-      security: true
+  block:
+      - name: "HIGH | PGS9-00-000300 | Security-relevant software updates to PostgreSQL must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs). | RHEL7 Install"
+        yum:
+            name: "{{ pgs9stig_postgres_packages }}"
+            state: latest
+            security: true
+        when: ansible_facts.distribution_major_version == "7"
+
+      - name: "HIGH | PGS9-00-000300 | Security-relevant software updates to PostgreSQL must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs). | RHEL8 Install"
+        dnf:
+            name: "{{ pgs9stig_postgres_packages }}"
+            state: latest
+            security: true
+        when: ansible_facts.distribution_major_version == "8"
   when: pgs9_00_000300
   tags:
       - PGS9-00-000300
