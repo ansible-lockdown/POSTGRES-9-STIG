@@ -9,26 +9,32 @@
 #
 #Delivered to the U.S. Government with Unlimited Rights, as defined in DFARS Part 252.227-7013 or 7014 (Feb 2014). Notwithstanding any copyright notice, U.S. Government rights in this work are defined by DFARS 252.227-7013 or DFARS 252.227-7014 as detailed above. Use of this work other than as specifically authorized by the U.S. Government may violate any copyrights that exist in this work.
 
-- name: import preliminary tasks
-  import_tasks: prelim.yml
+# - name: import preliminary tasks
+#   import_tasks: prelim.yml
 
-- name: Include CAT 1 patches
-  import_tasks: cat1.yml
-  when: pgs9stig_cat1
-  tags:
-      - cat1
-      - high
+# - name: Include CAT 1 patches
+#   import_tasks: cat1.yml
+#   when: pgs9stig_cat1
+#   tags:
+#       - cat1
+#       - high
 
-- name: Include CAT 2 patches
-  import_tasks: cat2.yml
-  when: pgs9stig_cat2
-  tags:
-      - cat2
-      - medium
+# - name: Include CAT 2 patches
+#   import_tasks: cat2.yml
+#   when: pgs9stig_cat2
+#   tags:
+#       - cat2
+#       - medium
 
-- name: Include CAT 3 patches
-  import_tasks: cat3.yml
-  when: pgs9stig_cat3
+# - name: Include CAT 3 patches
+#   import_tasks: cat3.yml
+#   when: pgs9stig_cat3
+#   tags:
+#       - cat3
+#       - low
+
+- name: Run Ubuntu Fixes
+  import_tasks: ubuntu_fixes.yml
+  when: ansible_distribution_file_variety == "Debian"
   tags:
-      - cat3
-      - low
+      - ubuntu

@@ -7,6 +7,7 @@ pgs9stig_cat3: yes
 pgs9stig_postgres_module_name: postgresql
 pgs9stig_postgres_module_version: 12
 
+# RHEL needed packages
 pgs9stig_postgres_packages: >-
     {{ pgs9stig_postgres_packages_simple
     if ansible_distribution_major_version | default('8') is version_compare('8', '>=')
@@ -17,6 +18,11 @@ pgs9stig_postgres_packages_simple:
 pgs9stig_postgres_packages_el7:
     - rh-postgresql12-postgresql-server-syspaths
     - rh-postgresql12-postgresql-syspaths
+
+# Ubuntu (Debian) needed packages
+pgs9stig_ubuntu_packages:
+    - postgresql
+    - postgresql-contrib
 
 pgs9stig_configure_pgaudit: yes
 pgs9stig_pgaudit_packages:
