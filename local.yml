@@ -1,4 +1,5 @@
 ---
+
 - name: Apply DISA Postgresql 9.x STIG remediations to the local host
   hosts: localhost
   connection: local

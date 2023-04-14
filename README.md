@@ -50,6 +50,7 @@ On our [Discord Server](https://discord.io/ansible-lockdown) to ask questions, d
 
 Configure a Postgres 9x system to be DISA STIG compliant.
 Non-disruptive CAT I, CAT II, and CAT III findings will be corrected by default.
+Disruptive finding remediation can be enabled by setting `pgs9stig_disruptive` to `true`.
 
 
 ## Updating
